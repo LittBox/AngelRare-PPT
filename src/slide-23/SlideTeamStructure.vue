@@ -23,28 +23,28 @@ const leaders = [
     tags: '算法建模 · 启发式优化 · 前沿方法',
     initials: 'WSH',
     avatar: 'wsh.jpg',
-    highlight: true,
+    highlight: false,
   },
 ]
 
-// 各部门成员（中等照片）
+// 各部门成员（13人）
 const members = [
-  // 技术研发
-  { name: '黄维哲', role: '技术研发', dept: '技术研发', initials: 'HWZ', avatar: 'hwz.jpg', deptColor: '#3C8DFF' },
-  { name: '孙一豪', role: '技术研发', dept: '技术研发', initials: 'SYH', avatar: 'syh.jpg', deptColor: '#3C8DFF' },
-  { name: '丁俊宝', role: '技术研发', dept: '技术研发', initials: 'DJB', avatar: 'djb.jpg', deptColor: '#3C8DFF' },
-  { name: '丁秋羽', role: '技术研发', dept: '技术研发', initials: 'DQY', avatar: 'dqy.jpg', deptColor: '#3C8DFF' },
-  // 项目运营
-  { name: '张浩筠', role: '项目运营', dept: '项目运营', initials: 'ZHY', avatar: 'zhy.jpg', deptColor: '#19C6FF' },
-  { name: '李章娜', role: '项目运营', dept: '项目运营', initials: 'LZN', avatar: 'lzn.jpg', deptColor: '#19C6FF' },
-  { name: '农依', role: '项目运营', dept: '项目运营', initials: 'NY', avatar: 'ny.jpg', deptColor: '#19C6FF' },
-  // 市场传播
-  { name: '王翊暄', role: '市场传播', dept: '市场传播', initials: 'WYX', avatar: 'wyx.jpg', deptColor: '#E8B35C' },
-  { name: '吕迎祥', role: '市场传播', dept: '市场传播', initials: 'LYX', avatar: 'lyx.png', deptColor: '#E8B35C' },
-  { name: '吴小龙', role: '市场传播', dept: '市场传播', initials: 'WXL', avatar: 'wxl.jpg', deptColor: '#E8B35C' },
-  { name: '杨嘉怡', role: '市场传播', dept: '市场传播', initials: 'YJY', avatar: 'yjy.jpg', deptColor: '#E8B35C' },
-  { name: '周丽萍', role: '市场传播', dept: '市场传播', initials: 'ZLP', avatar: 'zlp.jpg', deptColor: '#E8B35C' },
-  { name: '曾湘雨', role: '市场传播', dept: '市场传播', initials: 'ZXY', avatar: 'zxy.jpg', deptColor: '#E8B35C' },
+  // 技术研发 - 4人
+  { name: '黄维哲', role: '技术研发', initials: 'HWZ', avatar: 'hwz.jpg', deptColor: '#3C8DFF' },
+  { name: '孙一豪', role: '技术研发', initials: 'SYH', avatar: 'syh.jpg', deptColor: '#3C8DFF' },
+  { name: '丁俊宝', role: '技术研发', initials: 'DJB', avatar: 'djb.jpg', deptColor: '#3C8DFF' },
+  { name: '丁秋羽', role: '技术研发', initials: 'DQY', avatar: 'dqy.jpg', deptColor: '#3C8DFF' },
+  // 项目运营 - 3人
+  { name: '张浩筠', role: '项目运营', initials: 'ZHY', avatar: 'zhy.jpg', deptColor: '#19C6FF' },
+  { name: '李章娜', role: '项目运营', initials: 'LZN', avatar: 'lzn.jpg', deptColor: '#19C6FF' },
+  { name: '农依', role: '项目运营', initials: 'NY', avatar: 'ny.jpg', deptColor: '#19C6FF' },
+  // 市场传播 - 6人
+  { name: '王翊暄', role: '市场传播', initials: 'WYX', avatar: 'wyx.jpg', deptColor: '#E8B35C' },
+  { name: '吕迎祥', role: '市场传播', initials: 'LYX', avatar: 'lyx.png', deptColor: '#E8B35C' },
+  { name: '吴小龙', role: '市场传播', initials: 'WXL', avatar: 'wxl.jpg', deptColor: '#E8B35C' },
+  { name: '杨嘉怡', role: '市场传播', initials: 'YJY', avatar: 'yjy.jpg', deptColor: '#E8B35C' },
+  { name: '周丽萍', role: '市场传播', initials: 'ZLP', avatar: 'zlp.jpg', deptColor: '#E8B35C' },
+  { name: '曾湘雨', role: '市场传播', initials: 'ZXY', avatar: 'zxy.jpg', deptColor: '#E8B35C' },
 ]
 
 const deptSummary = [
@@ -59,17 +59,17 @@ const deptSummary = [
     <SlideBg />
 
     <div class="content">
-      <!-- 顶部 -->
+      <!-- 顶部：徽章 + Slogan -->
       <div class="top">
         <SlideBadge :label="secondLevelNav" color="gold" />
         <h1 class="slogan">{{ slogan }}</h1>
       </div>
 
-      <!-- 核心领导（大半身照） -->
+      <!-- 核心领导 -->
       <div class="leaders">
         <div v-for="l in leaders" :key="l.name" class="leader-card">
           <div class="leader-photo-wrap">
-            <div class="photo-glow" :style="{ background: l.highlight ? 'rgba(232,179,92,0.15)' : 'rgba(57,141,255,0.15)' }"></div>
+            <div class="photo-glow" :style="{ background: l.highlight ? 'rgba(232,179,92,0.12)' : 'rgba(57,141,255,0.12)' }"></div>
             <img
               :src="`/assets/images/content/team-members/学生/${l.avatar}`"
               :alt="l.name"
@@ -85,7 +85,7 @@ const deptSummary = [
         </div>
       </div>
 
-      <!-- 各部门成员（中等照片 5×3 网格） -->
+      <!-- 各部门成员（5×3 网格） -->
       <div class="members-grid">
         <div v-for="m in members" :key="m.name" class="member-card">
           <div class="member-photo-wrap">
@@ -101,7 +101,7 @@ const deptSummary = [
         </div>
       </div>
 
-      <!-- 底部：部门构成 -->
+      <!-- 底部：部门构成条 -->
       <div class="dept-bar">
         <div v-for="d in deptSummary" :key="d.name" class="dept-item" :style="{ borderColor: d.color }">
           <div class="di-label" :style="{ color: d.color }">{{ d.name }}</div>
@@ -129,14 +129,20 @@ const deptSummary = [
 .content {
   position: relative;
   z-index: var(--z-base);
-  padding: 52px 100px 40px;
+  padding: 48px 100px 36px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
   height: 100%;
+  min-height: 0;
 }
 
-.top { display: flex; flex-direction: column; gap: 12px; }
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
 
 .slogan {
   margin: 0;
@@ -155,14 +161,15 @@ const deptSummary = [
 .leaders {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 24px;
+  flex-shrink: 0;
 }
 
 .leader-card {
   display: flex;
   align-items: center;
-  gap: 28px;
-  padding: 24px 32px;
+  gap: 24px;
+  padding: 20px 28px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
@@ -170,8 +177,8 @@ const deptSummary = [
 
 .leader-photo-wrap {
   position: relative;
-  width: 160px;
-  height: 200px;
+  width: 140px;
+  height: 175px;
   flex-shrink: 0;
 }
 
@@ -179,12 +186,12 @@ const deptSummary = [
   position: absolute;
   inset: -8px;
   border-radius: var(--radius-lg);
-  filter: blur(20px);
+  filter: blur(16px);
 }
 
 .leader-photo {
-  width: 160px;
-  height: 200px;
+  width: 140px;
+  height: 175px;
   object-fit: cover;
   border-radius: var(--radius-md);
   position: relative;
@@ -197,14 +204,14 @@ const deptSummary = [
   border-radius: var(--radius-md);
   border: 3px solid;
   z-index: 2;
-  box-shadow: 0 0 20px currentColor;
+  box-shadow: 0 0 16px currentColor;
 }
 
 .leader-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .leader-name {
@@ -227,13 +234,13 @@ const deptSummary = [
   line-height: 1.5;
 }
 
-/* 部门成员 5×3 */
+/* 部门成员 4+4+5 = 13人，改成 5+4+4 的不对称布局 */
 .members-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(5, 1fr) repeat(4, 1fr) repeat(4, 1fr);
+  gap: 10px;
   flex: 1;
+  min-height: 0;
   overflow: hidden;
 }
 
@@ -241,24 +248,25 @@ const deptSummary = [
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 14px 8px;
+  padding: 10px 6px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-md);
   text-align: center;
-  gap: 8px;
+  gap: 6px;
+  min-width: 0;
 }
 
 .member-photo-wrap {
   position: relative;
-  width: 88px;
-  height: 88px;
+  width: 72px;
+  height: 72px;
   flex-shrink: 0;
 }
 
 .member-photo {
-  width: 88px;
-  height: 88px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid rgba(57, 141, 255, 0.5);
@@ -266,8 +274,8 @@ const deptSummary = [
 
 .dept-dot {
   position: absolute;
-  bottom: 2px;
-  right: 2px;
+  bottom: 0;
+  right: 0;
   width: 14px;
   height: 14px;
   border-radius: 50%;
@@ -279,12 +287,18 @@ const deptSummary = [
   font-size: var(--text-base);
   font-weight: 700;
   color: white;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .member-dept {
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 /* 部门构成 */
@@ -292,14 +306,14 @@ const deptSummary = [
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .dept-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
+  padding: 12px 20px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid;
   border-radius: var(--radius-md);
