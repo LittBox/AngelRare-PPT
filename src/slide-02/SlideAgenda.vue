@@ -111,20 +111,26 @@ const sections = [
 .agenda-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 40px;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 32px;
   width: 100%;
-  height: calc(100% - 180px);
+  /* 固定网格高度，确保卡片有足够空间显示所有条目 */
+  height: calc(100vh - 100px - 100px - 180px);
+  min-height: 720px;
 }
 
 .agenda-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-lg);
-  padding: 40px 48px;
+  padding: 32px 40px;
   position: relative;
   overflow: hidden;
   transition: all var(--duration-base) var(--ease-out);
+  /* 确保卡片高度足以容纳 5 条目 */
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
 .agenda-card::before {
@@ -172,17 +178,20 @@ const sections = [
 .section-items {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   padding-left: 8px;
+  flex: 1; /* 占据剩余空间 */
 }
 
 .section-items li {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: var(--text-lg);
+  font-size: var(--text-base); /* 适当缩小确保 5 条目可显示 */
   color: var(--color-text);
   font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
 }
 
 .bullet {

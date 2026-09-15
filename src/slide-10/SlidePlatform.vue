@@ -1,70 +1,115 @@
 <script setup>
+import { ref } from 'vue'
+
+
 /**
  * SlidePlatform.vue
- * 第 10 页：AngelRare 平台介绍
+ * 第 10 页：问题导向
  *
- * 内容来源（参考设计稿 slide10）：
- * - AngelRare 聚焦 罕见病 发现难 确诊慢 研究弱
- * - 融合 多技术 人工智能 多源数据 可信推理
- * - 构建 新体系 基层发现 循证分析 协同转诊 科研沉淀
- * - 面向罕见病领域的智能辅助诊疗与科研协同平台
- * - 面向基层医生，协助快速识别疑似罕见病患者
- * - 支持科研人员开展病例整理、自然史研究与证据整合
+ * 【核心原则：设计可以自由，内容必须忠实】
+ *
+ * 文案铁律（100% 逐字执行）：
+ *   二级目录：「问题导向」
+ *   Slogan：「从一个人的困境，看见一群人的难题」
+ *
+ * 内容来源（文字版 二·1 问题导向）：
+ *   · 团队成员的罕见病相关经历，引发对"确诊难、信息散、协同弱"的持续关注
+ *   · 通过患者、医生、医院及产业相关方调研，将个体痛点扩展为多主体共性问题
+ *   · 识别核心矛盾：罕见病并非只有"诊断难"，更存在科研转化、患者管理、援助衔接与产业证据构建之间的信息割裂
+ *   · 判断问题价值：痛点真实、高频、长期存在，且现有方案主要集中于诊断环节，诊断后服务存在明显空白
  */
-const focusItems = ['发现难', '确诊慢', '研究弱']
-const techItems = ['人工智能', '多源数据', '可信推理']
-const sysItems = ['基层发现', '循证分析', '协同转诊', '科研沉淀']
+
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('问题导向')
+const slogan = ref('从一个人的困境，看见一群人的难题')
+
+// 问题识别：三大核心痛点
+const painPoints = [
+  {
+    label: '确诊难',
+    icon: '🔍',
+    detail: '罕见病平均确诊周期 5-7 年，误诊率居高不下',
+    color: '#f44336',
+  },
+  {
+    label: '信息散',
+    icon: '📂',
+    detail: '患者数据分散在各处，诊疗信息无法追溯与复用',
+    color: '#ff9800',
+  },
+  {
+    label: '协同弱',
+    icon: '🔗',
+    detail: '患者、医生、药企、公益机构之间缺乏有效连接',
+    color: '#ff5722',
+  },
+]
+
+// 问题扩展路径：从个体到群体
+const expansionSteps = [
+  { step: '01', text: '个体经历', sub: '团队成员的罕见病相关经历' },
+  { step: '02', text: '持续关注', sub: '对"确诊难、信息散、协同弱"的持续关注' },
+  { step: '03', text: '多主体共性', sub: '患者、医生、医院、药企、公益组织多方调研' },
+  { step: '04', text: '核心矛盾', sub: '诊断后服务空白、科研转化与产业证据割裂' },
+]
+
+// 核心矛盾（底部引用）
+const coreConflict = '罕见病并非只有"诊断难"，更存在科研转化、患者管理、援助衔接与产业证据构建之间的信息割裂'
+
+// 问题价值判断
+const problemValue = '痛点真实、高频、长期存在，且现有方案主要集中于诊断环节，诊断后服务存在明显空白'
 </script>
 
 <template>
   <div class="slide-platform">
     <div class="header">
-      <div class="badge">平台介绍</div>
-      <h1 class="title">AngelRare：面向罕见病的智能辅助诊疗与科研协同平台</h1>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
 
-    <div class="content">
-      <!-- 中间 Logo -->
-      <div class="brand-center">
-        <div class="brand-logo">AngelRare</div>
-      </div>
+    <!-- 灵魂 Slogan -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
-      <!-- 三层结构 -->
-      <div class="layer layer-focus">
-        <div class="layer-label">聚焦</div>
-        <div class="layer-items">
-          <div v-for="item in focusItems" :key="item" class="item focus-item">{{ item }}</div>
+    <!-- 三大核心痛点 -->
+    <div class="pain-section">
+      <div class="pain-label">三大核心痛点</div>
+      <div class="pain-cards">
+        <div
+          v-for="(p, i) in painPoints"
+          :key="i"
+          class="pain-card"
+          :style="{ borderColor: p.color + '40', background: p.color + '10' }"
+        >
+          <div class="pc-icon" :style="{ color: p.color }">{{ p.icon }}</div>
+          <div class="pc-label" :style="{ color: p.color }">{{ p.label }}</div>
+          <div class="pc-detail">{{ p.detail }}</div>
         </div>
       </div>
+    </div>
 
-      <div class="arrow">↓</div>
-
-      <div class="layer layer-tech">
-        <div class="layer-label">融合</div>
-        <div class="layer-items">
-          <div v-for="item in techItems" :key="item" class="item tech-item">{{ item }}</div>
+    <!-- 问题扩展路径 -->
+    <div class="expansion-section">
+      <div class="exp-label">问题扩展路径</div>
+      <div class="exp-steps">
+        <div v-for="(s, i) in expansionSteps" :key="i" class="exp-step">
+          <div class="es-num">{{ s.step }}</div>
+          <div class="es-body">
+            <div class="es-text">{{ s.text }}</div>
+            <div class="es-sub">{{ s.sub }}</div>
+          </div>
+          <div v-if="i < expansionSteps.length - 1" class="es-arrow">→</div>
         </div>
       </div>
+    </div>
 
-      <div class="arrow">↓</div>
-
-      <div class="layer layer-sys">
-        <div class="layer-label">构建</div>
-        <div class="layer-items">
-          <div v-for="item in sysItems" :key="item" class="item sys-item">{{ item }}</div>
-        </div>
+    <!-- 核心矛盾 + 问题价值 -->
+    <div class="conclusion-row">
+      <div class="conflict-box">
+        <div class="cb-label">核心矛盾</div>
+        <div class="cb-text">{{ coreConflict }}</div>
       </div>
-
-      <!-- 底部说明 -->
-      <div class="footer-note">
-        <div class="note-item">
-          <span class="note-icon">🏥</span>
-          <span>面向基层医生，协助快速识别疑似罕见病患者，提升诊疗效率</span>
-        </div>
-        <div class="note-item">
-          <span class="note-icon">🔬</span>
-          <span>支持科研人员开展病例整理、自然史研究与证据整合</span>
-        </div>
+      <div class="value-box">
+        <div class="vb-label">问题价值</div>
+        <div class="vb-text">{{ problemValue }}</div>
       </div>
     </div>
   </div>
@@ -76,68 +121,193 @@ const sysItems = ['基层发现', '循证分析', '协同转诊', '科研沉淀'
   height: 1080px;
   background: #0a0a1a;
   color: white;
-  padding: 80px 140px;
+  padding: 60px 100px;
   font-family: var(--font-display);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
-.header { margin-bottom: 40px; }
+
+.header {
+  margin-bottom: 8px;
+}
+
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(74, 108, 247, 0.15); color: var(--color-accent);
-  border: 1px solid rgba(74, 108, 247, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 20px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title {
-  font-size: var(--text-2xl); font-weight: 700; letter-spacing: 2px;
+
+.slogan {
+  margin: 0 0 24px 0;
+  padding: 0;
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-.brand-center {
-  font-size: var(--text-3xl); font-weight: 900; letter-spacing: 4px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 16px;
+
+/* 三大痛点 */
+.pain-section {
+  margin-bottom: 20px;
 }
-.layer {
-  width: 80%;
-  display: flex; align-items: center; gap: 24px;
-  padding: 24px 32px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: var(--radius-lg);
+
+.pain-label,
+.exp-label {
+  font-size: 12px;
+  color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
 }
-.layer-label {
-  font-size: var(--text-base); color: var(--color-accent);
-  font-weight: 600; letter-spacing: 4px; min-width: 60px;
+
+.pain-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
-.layer-items { display: flex; gap: 16px; flex: 1; justify-content: center; }
-.item {
-  padding: 12px 28px;
-  border-radius: var(--radius-full);
-  font-size: var(--text-lg); font-weight: 600;
-  letter-spacing: 2px;
-}
-.focus-item {
-  background: rgba(244, 67, 54, 0.15); color: #f44336; border: 1px solid rgba(244, 67, 54, 0.3);
-}
-.tech-item {
-  background: rgba(74, 108, 247, 0.15); color: var(--color-primary-light); border: 1px solid rgba(74, 108, 247, 0.3);
-}
-.sys-item {
-  background: rgba(0, 212, 255, 0.15); color: var(--color-accent); border: 1px solid rgba(0, 212, 255, 0.3);
-}
-.arrow {
-  font-size: 32px; color: var(--color-primary); opacity: 0.5;
-}
-.footer-note {
-  display: flex; gap: 40px; margin-top: 24px; justify-content: center;
-}
-.note-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px 24px;
-  background: rgba(255, 255, 255, 0.04);
+
+.pain-card {
+  padding: 24px 28px;
+  border: 1px solid;
   border-radius: var(--radius-md);
-  font-size: var(--text-base); color: var(--color-text-muted);
+  text-align: center;
+}
+
+.pc-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.pc-label {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+
+.pc-detail {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
   font-weight: 300;
 }
-.note-icon { font-size: 24px; }
+
+/* 问题扩展路径 */
+.expansion-section {
+  margin-bottom: 20px;
+}
+
+.exp-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  position: relative;
+}
+
+.exp-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+}
+
+.es-num {
+  font-size: 28px;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  flex-shrink: 0;
+}
+
+.es-body {
+  flex: 1;
+}
+
+.es-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.es-sub {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.es-arrow {
+  font-size: 20px;
+  color: var(--color-accent);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* 底部两栏 */
+.conclusion-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.conflict-box,
+.value-box {
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+}
+
+.conflict-box {
+  background: rgba(244, 67, 54, 0.06);
+  border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.value-box {
+  background: rgba(76, 175, 80, 0.06);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.cb-label,
+.vb-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.cb-label {
+  color: #f44336;
+}
+
+.vb-label {
+  color: #4caf50;
+}
+
+.cb-text,
+.vb-text {
+  font-size: 14px;
+  color: white;
+  line-height: 1.6;
+  font-weight: 300;
+}
 </style>

@@ -1,16 +1,4 @@
 <script setup>
-/**
- * SlideCover.vue
- * 第 1 页：封面
- *
- * 内容来源（参考设计稿 slide1）：
- * - 标题：罕见病科研与准入的嵌入式服务基础设施
- * - 副标题：AngelRare
- * - 负责人：郭俨霆
- * - 比赛赛道：高教主赛道
- * - 参赛院校：云南大学
- * - 组别：本科生组
- */
 import { ref } from 'vue'
 import logoUrl from '@assets/images/icons/project-logo.png'
 
@@ -24,14 +12,21 @@ const group = ref('本科生组')
 
 <template>
   <div class="slide-cover">
-    <!-- 背景装饰（占位，等待设计稿确定） -->
-    <div class="bg-decoration"></div>
+    <!-- 多层背景 -->
+    <div class="bg-layer-1"></div>
+    <div class="bg-layer-2"></div>
+    <div class="bg-layer-3"></div>
+    <div class="bg-layer-4"></div>
+    <div class="bg-glow-tl"></div>
+    <div class="bg-glow-br"></div>
+    <div class="bg-dna-grid"></div>
 
     <!-- 主内容 -->
     <div class="content">
-      <!-- 左上角 logo -->
+      <!-- 左上角 Logo -->
       <div class="logo-area">
         <img :src="logoUrl" alt="AngelRare Logo" class="logo" />
+        <div class="logo-glow"></div>
       </div>
 
       <!-- 中间主标题 -->
@@ -46,16 +41,19 @@ const group = ref('本科生组')
       <div class="info-bar">
         <div class="info-item">
           <span class="info-label">负责人</span>
-          <span class="info-value">{{ leader }}</span>
+          <span class="info-value gold">{{ leader }}</span>
         </div>
+        <div class="info-divider"></div>
         <div class="info-item">
           <span class="info-label">赛道</span>
           <span class="info-value">{{ track }}</span>
         </div>
+        <div class="info-divider"></div>
         <div class="info-item">
           <span class="info-label">院校</span>
           <span class="info-value">{{ school }}</span>
         </div>
+        <div class="info-divider"></div>
         <div class="info-item">
           <span class="info-label">组别</span>
           <span class="info-value">{{ group }}</span>
@@ -70,45 +68,92 @@ const group = ref('本科生组')
   width: 1920px;
   height: 1080px;
   position: relative;
-  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0a0a1a 100%);
+  background: #020817;
   color: white;
   overflow: hidden;
   font-family: var(--font-display);
 }
 
-/* 背景装饰（待设计稿确定具体样式） */
-.bg-decoration {
+/* 多层背景 */
+.bg-layer-1 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 120% 80% at 50% 0%, #040819 0%, #020817 60%, #010610 100%);
+}
+.bg-layer-2 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(74, 108, 247, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
-  pointer-events: none;
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(47, 128, 255, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(232, 179, 92, 0.05) 0%, transparent 70%);
+}
+.bg-layer-3 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(2, 8, 23, 0.7) 100%);
+}
+.bg-layer-4 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(57, 141, 255, 0.03) 0%, transparent 40%);
+}
+.bg-glow-tl {
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(47, 128, 255, 0.12) 0%, transparent 70%);
+  filter: blur(60px);
+}
+.bg-glow-br {
+  position: absolute;
+  bottom: -200px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(232, 179, 92, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+}
+.bg-dna-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(57, 141, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 141, 255, 0.04) 1px, transparent 1px);
+  background-size: 100px 100px;
 }
 
-/* 主内容容器 */
+/* 主内容 */
 .content {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 80px 100px;
+  padding: 80px 140px;
 }
 
-/* Logo 区域 */
+/* Logo */
 .logo-area {
-  display: flex;
-  align-items: center;
+  position: relative;
+  display: inline-block;
 }
-
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 96px;
+  height: 96px;
   object-fit: contain;
-  border-radius: 12px;
+  position: relative;
+  z-index: 2;
+}
+.logo-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(232, 179, 92, 0.25) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: 1;
 }
 
 /* 中间主标题 */
@@ -116,77 +161,76 @@ const group = ref('本科生组')
   text-align: center;
   margin: auto 0;
 }
-
 .brand-name {
   font-size: var(--text-2xl);
   font-weight: 600;
-  letter-spacing: 8px;
-  color: var(--color-accent);
+  letter-spacing: 12px;
+  color: var(--color-gold);
   margin-bottom: 32px;
   text-transform: uppercase;
 }
-
 .main-title {
   font-size: var(--text-4xl);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.3;
   margin: 0 auto;
   max-width: 1400px;
-  background: linear-gradient(135deg, #ffffff 0%, #b0c4ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #c8d8ff 60%, #78A6FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .divider {
-  width: 120px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  width: 160px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-blue-mid), var(--color-gold), transparent);
   margin: 48px auto;
   border-radius: 2px;
 }
-
 .subtitle-en {
   font-size: var(--text-base);
-  color: var(--color-text-muted);
-  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 3px;
   font-weight: 300;
 }
 
 /* 底部信息栏 */
 .info-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 32px 48px;
+  gap: 0;
+  padding: 28px 60px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
 }
-
 .info-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
   flex: 1;
-  text-align: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 40px;
 }
-
-.info-item:last-child {
-  border-right: none;
-}
-
 .info-label {
-  font-size: var(--text-sm);
-  color: var(--color-text-dim);
-  letter-spacing: 2px;
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
-
 .info-value {
   font-size: var(--text-xl);
   font-weight: 600;
   color: white;
+  letter-spacing: 2px;
+}
+.info-value.gold { color: var(--color-gold); }
+.info-divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.10);
+  flex-shrink: 0;
 }
 </style>

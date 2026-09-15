@@ -1,51 +1,128 @@
-<script setup>import { ref } from 'vue'
+<script setup>
+import { ref } from 'vue'
+import SlideBadge from '@/components/SlideBadge.vue'
+import SlideBg from '@/components/SlideBg.vue'
 
 
 /**
  * SlidePractice.vue
- * 第 7 页：实践足迹（时间线）
+ * 第 6 页：逻辑正确
  *
- * 内容来源（参考设计稿 slide7）：
- * - 2025.02 团队正式成立
- * - 2025.07 与罕见病患者线上访谈
- * - 2025.08 到基金会交流项目商业模式
- * - 2025.12 到云南省第一人民医院进行交流合作
- * - 2026.01 初代产品问世
- * - 2026.04 社交平台正式开启运营
+ * 视觉重构（2026-09-15）：
+ * 不是时间线，是 1.0→5.0 版本迭代+证伪逻辑。
+ * 视觉核心：越走越聚焦。
+ * 每次迭代 = 提出假设 → 市场验证 → 发现矛盾 → 主动证伪 → 决策。
  */
+
 // ============== 定稿文案（不可修改） ==============
 const secondLevelNav = ref('逻辑正确')
 const slogan = ref('在证伪中，走向正确')
 
-const milestones = [
-  { date: '2025.02', title: '团队正式成立', desc: '项目团队组建，确立罕见病方向' },
-  { date: '2025.07', title: '患者线上访谈', desc: '与罕见病患者深度访谈，了解实际情况' },
-  { date: '2025.08', title: '基金会商业模式交流', desc: '到基金会交流项目商业模式' },
-  { date: '2025.12', title: '云南省一人民医院', desc: '到云南省第一人民医院进行交流合作' },
-  { date: '2026.01', title: '初代产品问世', desc: '初代 AngelRare 产品正式发布' },
-  { date: '2026.04', title: '社交平台开启运营', desc: '官方社交平台正式开启运营' }
+const versions = [
+  {
+    version: '1.0',
+    name: '四方多边平台',
+    status: '放弃',
+    reason: '建设与信任成本过高，多方协调超出早期团队承载力',
+    logic: ['提出假设：做平台连接四方', '市场验证：接触潜在合作方', '发现矛盾：信任建立周期太长', '主动证伪 → 放弃'],
+    color: '#F44336',
+  },
+  {
+    version: '2.0',
+    name: '患者端收费',
+    status: '放弃',
+    reason: '与"让最需要帮助的人不成为买单的人"理念相悖，且消耗超出承载力',
+    logic: ['提出假设：患者付费维持运营', '市场验证：访谈患者家庭', '发现矛盾：经济压力已极大', '主动证伪 → 放弃'],
+    color: '#F44336',
+  },
+  {
+    version: '3.0',
+    name: '按例撮合费',
+    status: '放弃',
+    reason: '撮合量不足以支撑运营成本，且限制了转诊效率',
+    logic: ['提出假设：每次转诊收撮合费', '市场验证：测算转诊频率', '发现矛盾：转诊量级不够', '主动证伪 → 放弃'],
+    color: '#F44336',
+  },
+  {
+    version: '4.0',
+    name: '直接承接CRO',
+    status: '放弃',
+    reason: '直接CRO需庞大运营体系，与团队核心能力不匹配',
+    logic: ['提出假设：承接药企临床外包', '市场验证：了解CRO门槛', '发现矛盾：需专业BD与交付团队', '主动证伪 → 放弃'],
+    color: '#F44336',
+  },
+  {
+    version: '5.0',
+    name: '医生科研 + PAP + RWE',
+    status: '保留',
+    reason: '与团队核心能力高度匹配，已通过市场验证',
+    logic: ['提出假设：聚焦医生科研切入口', '市场验证：签署合作意向书', '持续收敛 → PAP + RWE', '最终收敛 → 诊断后服务体系'],
+    color: '#4CAF50',
+  },
 ]
+
+// 底部核心引用
+const conclusion = ref('不是从未犯错，而是在不断证伪中走向正确')
 </script>
 
 <template>
   <div class="slide-practice">
-    <div class="header">
-      <div class="badge">{{ secondLevelNav }}</div>
-    </div>
+    <SlideBg />
 
-    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
-    <h1 class="slogan">{{ slogan }}</h1>
+    <div class="content">
+      <!-- 顶部：徽章 + Slogan -->
+      <div class="top">
+        <SlideBadge :label="secondLevelNav" color="blue" />
+        <h1 class="slogan">{{ slogan }}</h1>
+      </div>
 
-    <div class="timeline-container">
-      <div class="timeline-line"></div>
-      <div class="timeline-items">
-        <div v-for="(m, i) in milestones" :key="i" class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">{{ m.date }}</div>
-          <div class="timeline-card">
-            <div class="timeline-title">{{ m.title }}</div>
-            <div class="timeline-desc">{{ m.desc }}</div>
+      <!-- 1.0→5.0 大版本迭代 -->
+      <div class="versions">
+        <div
+          v-for="(v, i) in versions"
+          :key="i"
+          class="version-col"
+          :class="v.status === '保留' ? 'kept' : 'abandoned'"
+          :style="{ '--v-color': v.color }"
+        >
+          <!-- 版本号大字 -->
+          <div class="v-number">{{ v.version }}</div>
+
+          <!-- 状态标签 -->
+          <div class="v-status">{{ v.status }}</div>
+
+          <!-- 版本名称 -->
+          <div class="v-name">{{ v.name }}</div>
+
+          <!-- 证伪逻辑流程 -->
+          <div class="v-logic">
+            <div
+              v-for="(line, j) in v.logic"
+              :key="j"
+              class="logic-line"
+            >{{ line }}</div>
           </div>
+
+          <!-- 连接箭头 -->
+          <div v-if="i < versions.length - 1" class="v-arrow">
+            <div class="arrow-line"></div>
+            <div class="arrow-head">›</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 底部：核心引用 + 版本数标注 -->
+      <div class="bottom">
+        <div class="conclusion">
+          <span class="cq-mark">❝</span>
+          <span class="cq-text">{{ conclusion }}</span>
+        </div>
+        <div class="version-count">
+          <span class="vc-num">5</span>
+          <span class="vc-label">次主动证伪</span>
+          <span class="vc-divider">/</span>
+          <span class="vc-kept">1</span>
+          <span class="vc-label">次收敛</span>
         </div>
       </div>
     </div>
@@ -56,109 +133,206 @@ const milestones = [
 .slide-practice {
   width: 1920px;
   height: 1080px;
-  background: #0a0a1a;
-  color: white;
-  padding: 80px 140px;
-  font-family: var(--font-display);
   position: relative;
+  background: var(--color-bg);
+  color: white;
+  font-family: var(--font-display);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.header {
-  margin-bottom: 30px;
+.content {
+  position: relative;
+  z-index: var(--z-base);
+  padding: 56px 100px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  height: 100%;
 }
 
-.badge {
-  display: inline-block;
-  padding: 8px 24px;
-  background: rgba(74, 108, 247, 0.12);
-  color: var(--color-accent, #00d4ff);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: 999px;
-  font-size: 16px;
-  letter-spacing: 6px;
-  font-weight: 400;
+/* 顶部 */
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .slogan {
-  margin: 30px 0 60px 0;
+  margin: 0;
   padding: 0;
-  font-size: 84px;
+  font-size: var(--text-4xl);
   font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: 6px;
-  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  line-height: 1.1;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #ffffff 0%, #3C8DFF 60%, #19C6FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.timeline-container {
-  position: relative;
-  padding: 40px 0;
-}
-
-.timeline-line {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
-}
-
-.timeline-items {
+/* 1.0→5.0 大版本迭代 */
+.versions {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 24px;
-  position: relative;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+  flex: 1;
 }
 
-.timeline-item {
+.version-col {
+  position: relative;
+  padding: 28px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 3px solid var(--v-color);
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
-.timeline-dot {
-  width: 20px;
-  height: 20px;
-  background: var(--color-accent);
-  border: 4px solid #0a0a1a;
-  border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0 0 16px rgba(0, 212, 255, 0.6);
+.version-col.kept {
+  background: rgba(76, 175, 80, 0.05);
+  border-color: rgba(76, 175, 80, 0.20);
+  box-shadow: 0 0 24px rgba(76, 175, 80, 0.15);
 }
 
-.timeline-date {
-  font-size: var(--text-base);
-  font-weight: 700;
-  color: var(--color-accent);
+.version-col.abandoned {
+  opacity: 0.75;
+}
+
+.v-number {
+  font-size: 48px;
+  font-weight: 900;
   font-family: var(--font-mono);
+  background: linear-gradient(135deg, var(--v-color), rgba(255,255,255,0.5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.v-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: color-mix(in srgb, var(--v-color) 20%, transparent);
+  color: var(--v-color);
+  border: 1px solid color-mix(in srgb, var(--v-color) 40%, transparent);
+  align-self: flex-start;
+}
+
+.v-name {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+}
+
+.v-logic {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.logic-line {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* 连接箭头 */
+.v-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.arrow-line {
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(57,141,255,0.5), rgba(57,141,255,0.2));
+}
+
+.arrow-head {
+  font-size: 28px;
+  color: rgba(57, 141, 255, 0.5);
+  line-height: 1;
+}
+
+/* 底部 */
+.bottom {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 20px 28px;
+  border-top: 1px solid rgba(57, 141, 255, 0.15);
+  margin-top: auto;
+}
+
+.conclusion {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cq-mark {
+  font-size: 32px;
+  color: rgba(57, 141, 255, 0.6);
+  line-height: 1;
+}
+
+.cq-text {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: white;
   letter-spacing: 2px;
 }
 
-.timeline-card {
-  width: 100%;
-  padding: 24px 20px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.version-count {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(57, 141, 255, 0.08);
+  border: 1px solid rgba(57, 141, 255, 0.20);
   border-radius: var(--radius-md);
-  text-align: center;
 }
 
-.timeline-title {
-  font-size: var(--text-base);
-  font-weight: 700;
-  color: white;
-  margin-bottom: 8px;
+.vc-num {
+  font-size: 40px;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: #F44336;
+  line-height: 1;
 }
 
-.timeline-desc {
+.vc-kept {
+  font-size: 40px;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: #4CAF50;
+  line-height: 1;
+}
+
+.vc-label {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
-  line-height: 1.6;
-  font-weight: 300;
+}
+
+.vc-divider {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.2);
+  margin: 0 4px;
 }
 </style>

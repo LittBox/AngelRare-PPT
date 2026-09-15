@@ -1,44 +1,66 @@
-/* ================================
- * CSS 主题变量
- * 配色依据：design-reference.pptx 实际使用的颜色
- * 集中管理：颜色、字体、间距、动画时长
- * 修改这里即可全局生效
- * ================================ */
+/* ================================================================
+ * AngelRare PPT 全局 CSS 变量
+ *
+ * 视觉语言：
+ *   蓝 = 科技 / AI / 推理
+ *   金 = 生命 / 患者 / 温度 / 价值
+ *
+ * 不是用更多框装下更多信息，
+ * 而是用更强的视觉层级，让评委更快看懂信息。
+ * ================================================================ */
 
 :root {
-  /* ---- 主色板（基于设计稿真实配色）---- */
-  --color-primary: #4673C5;         /* 主色：宝石蓝（设计稿使用频次高）*/
-  --color-primary-light: #6592EC;   /* 亮蓝（强调）*/
-  --color-primary-dark: #2261BB;    /* 深蓝 */
+  /* ---- 极深蓝黑基础背景 ---- */
+  --color-bg-deepest:   #020817;
+  --color-bg-deep:      #040819;
+  --color-bg:           #060A1D;
+  --color-bg-soft:      #0B1228;
+  --color-surface:      #0E1A36;
+  --color-surface-2:    #142040;
 
-  /* ---- 强调色（金棕色 + 金黄色 - 设计稿标志色）---- */
-  --color-accent: #E8BD7C;          /* 金棕色：设计稿 143 次出现，核心标志色 */
-  --color-accent-light: #FFC000;    /* 金黄色（辅助强调）*/
-  --color-accent-warm: #C00000;     /* 深红（重要警示）*/
+  /* ---- 科技蓝主色（科技/AI/推理）---- */
+  --color-blue-dim:     #1A3060;
+  --color-blue-mid:     #2F80FF;
+  --color-blue:         #3C8DFF;
+  --color-blue-bright:  #19C6FF;
+  --color-blue-light:   #78A6FF;
+  --color-blue-glow:    rgba(57, 141, 255, 0.35);
 
-  /* ---- 浅蓝色系（卡片背景）---- */
-  --color-blue-soft: #BDE3F5;        /* 极浅蓝 */
-  --color-blue-soft-2: #A2D8F0;      /* 浅蓝 */
-  --color-blue-soft-3: #C7D8EB;      /* 灰蓝 */
-  --color-blue-sky: #1AAFE7;         /* 天空蓝 */
-
-  /* ---- 中性色 ---- */
-  --color-bg: #000B30;               /* 主背景：深蓝（设计稿使用 45 次）*/
-  --color-bg-deep: #00030D;          /* 更深背景 */
-  --color-bg-soft: #0E2841;          /* 次级背景（设计稿主题色之一）*/
-  --color-surface: #142D52;          /* 卡片表面 */
-  --color-surface-2: #1A3A66;        /* 卡片表面 2 */
-  --color-text: #FFFFFF;             /* 主文字 */
-  --color-text-soft: #E9F2F5;        /* 柔和白 */
-  --color-text-muted: #C7D8EB;       /* 次文字 */
-  --color-text-dim: #5DA2C1;         /* 弱化文字 */
-  --color-border: #1A3A66;           /* 边框 */
-  --color-divider: #4676C7;          /* 分隔线 */
+  /* ---- 生命金色（生命/患者/希望/价值）---- */
+  --color-gold:         #E8B35C;
+  --color-gold-bright:  #F6C76E;
+  --color-gold-light:   #FFD78B;
+  --color-gold-dim:     #8B6030;
+  --color-gold-glow:    rgba(232, 179, 92, 0.35);
 
   /* ---- 状态色 ---- */
-  --color-success: #4EA72E;
-  --color-warning: #E97132;
-  --color-danger: #C00000;
+  --color-success:       #4CAF50;
+  --color-danger:        #F44336;
+  --color-warning:       #FF9800;
+
+  /* ---- 中性色 ---- */
+  --color-text:          #FFFFFF;
+  --color-text-soft:     rgba(255, 255, 255, 0.92);
+  --color-text-muted:    rgba(255, 255, 255, 0.60);
+  --color-text-dim:      rgba(255, 255, 255, 0.40);
+  --color-border:        rgba(255, 255, 255, 0.10);
+  --color-border-bright: rgba(57, 141, 255, 0.30);
+  --color-border-gold:   rgba(232, 179, 92, 0.30);
+
+  /* ---- 兼容旧变量（逐步迁移）---- */
+  --color-primary:       #2F80FF;
+  --color-primary-light: #78A6FF;
+  --color-primary-dark:  #1A4080;
+  --color-accent:        #E8B35C;
+  --color-accent-light:  #FFD78B;
+  --color-accent-warm:   #C00000;
+  --color-text-sm:       #C7D8EB;
+  --color-text-xs:       #5DA2C1;
+  --color-bg-alt:        #0B1228;
+  --color-bg-deep-alt:   #00030D;
+  --color-bg-alt-2:      #0E2841;
+  --color-border-alt:    #1A3A66;
+  --color-divider:       #4676C7;
 
   /* ---- 字体 ---- */
   --font-sans:
@@ -49,55 +71,64 @@
   --font-heading: 'FZXiaoBiaoSong-B05S', '方正小标宋简体', '黑体', sans-serif;
   --font-cursive: 'Kaiti SC', 'KaiTi', '楷体', serif;
 
-  /* ---- 字号（基于 1920×1080 设计稿，参考 ppt-master 字号指南）---- */
-  --text-xs: 14px;
-  --text-sm: 16px;
-  --text-base: 20px;        /* 参考 ppt-master: ppt169 presentation 模式初始 32，对应 1920 缩放 */
-  --text-lg: 24px;
-  --text-xl: 30px;
-  --text-2xl: 38px;
-  --text-3xl: 50px;
-  --text-4xl: 66px;
-  --text-5xl: 88px;
+  /* ---- 字号（1920×1080 基准 · 全局统一下限）----
+   * 灵魂 Slogan：≥ 72px（推荐 80–100px）
+   * 内容页主标题：42–56px
+   * 卡片标题：26–32px
+   * 正文：≥ 22px（推荐 24–28px）
+   * 辅助说明：≥ 20px
+   * 任何正文信息禁止低于 20px
+   */
+  --text-xs:    18px;   /* 辅助说明下限 */
+  --text-sm:    20px;   /* 正文下限 */
+  --text-base:  24px;   /* 推荐正文 */
+  --text-lg:    28px;
+  --text-xl:    32px;
+  --text-2xl:   42px;
+  --text-3xl:   56px;
+  --text-4xl:   72px;   /* 灵魂 Slogan 下限 */
+  --text-5xl:   96px;   /* 章节扉页 Slogan */
 
   /* ---- 间距 ---- */
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-5: 48px;
-  --space-6: 64px;
-  --space-8: 96px;
+  --space-1:  8px;
+  --space-2:  16px;
+  --space-3:  24px;
+  --space-4:  32px;
+  --space-5:  48px;
+  --space-6:  64px;
+  --space-8:  96px;
 
   /* ---- 圆角 ---- */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
   --radius-full: 9999px;
 
-  /* ---- 阴影（蓝色调阴影匹配设计稿）---- */
-  --shadow-sm: 0 2px 8px rgba(0, 11, 48, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 11, 48, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 11, 48, 0.5);
-  --shadow-glow-blue: 0 0 32px rgba(70, 115, 197, 0.4);
-  --shadow-glow-gold: 0 0 32px rgba(232, 189, 124, 0.4);
+  /* ---- 阴影与光效 ---- */
+  --shadow-blue-sm:   0 0 12px rgba(57, 141, 255, 0.20);
+  --shadow-blue-md:   0 0 24px rgba(57, 141, 255, 0.30);
+  --shadow-blue-lg:   0 0 48px rgba(57, 141, 255, 0.40);
+  --shadow-gold-sm:   0 0 12px rgba(232, 179, 92, 0.25);
+  --shadow-gold-md:   0 0 24px rgba(232, 179, 92, 0.35);
+  --shadow-gold-lg:   0 0 48px rgba(232, 179, 92, 0.45);
 
   /* ---- 动画 ---- */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --duration-fast: 200ms;
   --duration-base: 400ms;
   --duration-slow: 800ms;
 
-  /* ---- Z-index 层级 ---- */
-  --z-base: 1;
-  --z-overlay: 10;
-  --z-modal: 100;
-  --z-toast: 1000;
+  /* ---- Z-index ---- */
+  --z-bg:       0;
+  --z-base:     1;
+  --z-overlay:  10;
+  --z-modal:    100;
+  --z-glow:     200;
+  --z-toast:    1000;
 
-  /* ---- PPT 画布（16:9 标准）---- */
-  --slide-width: 1920px;
+  /* ---- PPT 画布 ---- */
+  --slide-width:  1920px;
   --slide-height: 1080px;
-  --slide-scale: 1;  /* 由 JS 根据窗口动态计算 */
 }

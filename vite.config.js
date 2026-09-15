@@ -16,7 +16,10 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       // 根目录的 assets 也用 @assets 别名访问
-      '@assets': fileURLToPath(new URL('./assets', import.meta.url))
+      '@assets': fileURLToPath(new URL('./assets', import.meta.url)),
+      // 共享幻灯片子组件统一通过 @components 引用
+      // （SlideBadge / SlideBg / SlidePlaceholder 等在 src/components/）
+      '@components': fileURLToPath(new URL('./src/components', import.meta.url))
     }
   },
   server: {
