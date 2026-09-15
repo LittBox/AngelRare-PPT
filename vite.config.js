@@ -7,7 +7,10 @@ import { fileURLToPath, URL } from 'node:url'
 // - 资源别名 @/ → src/
 // - 开发服务器 5173，预览 4173
 // - 允许访问局域网（方便其他设备预览）
+// - base 必须设为 GitHub Project Pages 子路径 /AngelRare-PPT/，
+//   才能让 JS/CSS/图片等静态资源在 https://littbox.github.io/AngelRare-PPT/ 下解析正确
 export default defineConfig({
+  base: '/AngelRare-PPT/',
   plugins: [vue()],
   resolve: {
     alias: {
