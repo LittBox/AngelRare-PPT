@@ -54,7 +54,7 @@ const sections = [
       <div class="title-en">CONTENTS</div>
     </div>
 
-    <!-- 四象限布局 -->
+    <!-- 四象限布局：grid auto-rows 自适应高度，禁止任何裁切 -->
     <div class="agenda-grid">
       <div v-for="section in sections" :key="section.num" class="agenda-card">
         <div class="card-header">
@@ -80,9 +80,12 @@ const sections = [
   position: relative;
   background: #0a0a1a;
   color: white;
-  padding: 100px 140px;
+  padding: 80px 140px;
   font-family: var(--font-display);
-  overflow: hidden;
+  /* 禁止裁切子节点 */
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 顶部标题 */
@@ -90,47 +93,49 @@ const sections = [
   display: flex;
   align-items: baseline;
   gap: 24px;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
+  flex-shrink: 0;
 }
 
 .page-title {
-  font-size: var(--text-4xl);
+  font-size: 72px;
   font-weight: 700;
   letter-spacing: 8px;
   color: white;
+  margin: 0;
 }
 
 .title-en {
-  font-size: var(--text-base);
-  color: var(--color-text-dim);
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.40);
   letter-spacing: 4px;
   font-weight: 300;
 }
 
-/* 四象限网格 */
+/* 四象限网格：使用 auto-rows + min-content，禁止固定高度裁切 */
 .agenda-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 32px;
+  /* auto-rows + min-content 让每行自适应内容高度 */
+  grid-auto-rows: min-content;
+  gap: 36px;
   width: 100%;
-  /* 固定网格高度，确保卡片有足够空间显示所有条目 */
-  height: calc(100vh - 100px - 100px - 180px);
-  min-height: 720px;
+  /* 不再使用 calc(100vh - ...) 这种容易裁切的固定高度 */
+  flex: 1;
+  min-height: 0;
 }
 
 .agenda-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--radius-lg);
-  padding: 32px 40px;
+  padding: 36px 48px;
   position: relative;
-  overflow: hidden;
-  transition: all var(--duration-base) var(--ease-out);
-  /* 确保卡片高度足以容纳 5 条目 */
-  min-height: 280px;
+  /* 关键修复：禁止 hidden，让内容溢出可见 */
+  overflow: visible;
   display: flex;
   flex-direction: column;
+  gap: 18px;
 }
 
 .agenda-card::before {
@@ -147,56 +152,61 @@ const sections = [
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .section-num {
-  font-size: var(--text-3xl);
+  font-size: 48px;
   font-weight: 700;
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-family: var(--font-mono);
+  line-height: 1;
 }
 
 .section-title {
-  font-size: var(--text-2xl);
+  font-size: 36px;
   font-weight: 600;
   letter-spacing: 4px;
+  color: white;
 }
 
 .section-slogan {
-  font-size: var(--text-base);
+  font-size: 22px;
   color: var(--color-accent);
   font-weight: 300;
   letter-spacing: 1px;
-  margin-bottom: 24px;
   padding-left: 8px;
   font-style: italic;
+  flex-shrink: 0;
 }
 
 .section-items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   padding-left: 8px;
-  flex: 1; /* 占据剩余空间 */
+  margin: 0;
+  list-style: none;
+  flex-shrink: 0;
 }
 
 .section-items li {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: var(--text-base); /* 适当缩小确保 5 条目可显示 */
+  gap: 14px;
+  font-size: 22px; /* 容易阅读，不缩到 < 20px */
   color: var(--color-text);
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.5;
   white-space: nowrap;
 }
 
 .bullet {
   color: var(--color-primary);
   font-weight: 700;
-  font-size: var(--text-xl);
+  font-size: 28px;
 }
 </style>

@@ -45,8 +45,8 @@ const validation = [
       </div>
 
       <!-- 核心原则 -->
-      <div class="section">
-        <div class="section-label">核心原则：谁受益，谁付钱</div>
+      <div class="inner-section">
+        <div class="inner-section-label">核心原则：谁受益，谁付钱</div>
         <div class="principle-row">
           <div v-for="p in principle" :key="p.role" class="principle-card" :style="{ borderColor: p.color + '60' }">
             <div class="pc-icon">{{ p.icon }}</div>
@@ -60,8 +60,8 @@ const validation = [
       </div>
 
       <!-- 三条收入线 -->
-      <div class="section">
-        <div class="section-label">三条收入线</div>
+      <div class="inner-section">
+        <div class="inner-section-label">三条收入线</div>
         <div class="revenue-row">
           <div v-for="r in revenueLines" :key="r.num" class="revenue-card" :style="{ borderColor: r.color + '50' }">
             <div class="rv-num" :style="{ color: r.color }">{{ r.num }}</div>
@@ -110,8 +110,8 @@ const validation = [
   background: linear-gradient(135deg, #ffffff 0%, #E8B35C 60%, #F6C76E 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.section { display: flex; flex-direction: column; gap: 12px; }
-.section-label {
+.inner-section { display: flex; flex-direction: column; gap: 12px; }
+.inner-section-label {
   font-size: 12px; color: var(--color-gold); font-weight: 700; letter-spacing: 4px;
 }
 .principle-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }

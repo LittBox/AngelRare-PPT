@@ -79,8 +79,8 @@
    * 辅助说明：≥ 20px
    * 任何正文信息禁止低于 20px
    */
-  --text-xs:    18px;   /* 辅助说明下限 */
-  --text-sm:    20px;   /* 正文下限 */
+  --text-xs:    20px;   /* 辅助说明下限 */
+  --text-sm:    22px;   /* 正文下限 */
   --text-base:  24px;   /* 推荐正文 */
   --text-lg:    28px;
   --text-xl:    32px;

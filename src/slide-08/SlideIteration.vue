@@ -6,69 +6,82 @@ import SlideBg from '@/components/SlideBg.vue'
 
 /**
  * SlideIteration.vue
- * 第 6 页：逻辑正确
+ * 第 7 页：知识掌握与应用能力
  *
- * 视觉重构（2026-09-15）：
- * 不是时间线，是 1.0→5.0 版本迭代+证伪逻辑。
- * 视觉核心：越走越聚焦。
- * 每列最多：提出假设 → 市场验证 → 最终决策（3项）
- * 1.0~4.0 红色系（放弃），5.0 绿色（保留收敛）
+ * 视觉重构（2026-09-15 revision02）：
+ * - 内容方向保留"数学 → AI → 医疗"主线
+ * - 负责人是计算科学/数学专业，把概率、数学、贝叶斯原理迁移到医疗场景
+ * - 贝叶斯仲裁器继续作为核心案例
+ * - 修复三栏对齐：同顶线/同底线/同宽/列表同一基线/箭头同一水平线
+ * - 不扩展成"三学科知识墙"，保留主线叙事
  */
 
 // ============== 定稿文案（不可修改） ==============
-const secondLevelNav = ref('逻辑正确')
-const slogan = ref('在证伪中，走向正确')
+const secondLevelNav = ref('知识掌握与应用能力')
+const slogan = ref('所学不止于书本，所知终用于真实')
 
-const versions = [
+// 三个知识领域（主线：数学 → AI → 医疗）
+const pillars = [
   {
-    version: '1.0',
-    name: '四方多边平台',
-    status: '放弃',
-    // 精简为3项
-    logic: ['提出假设：连接四方做平台', '市场验证：信任建立周期过长', '主动证伪 → 放弃'],
-    color: '#F44336',
-    bg: 'rgba(244,67,54,0.04)',
+    label: '数学',
+    pillar: 'PILLAR 01',
+    title: '概率与推理规则',
+    keywords: ['贝叶斯推断', '统计建模', '概率图模型'],
+    bullets: [
+      '概率与推理规则',
+      '贝叶斯方法',
+      'Log-Odds 表达',
+    ],
+    color: '#3C8DFF',
+    icon: '∑',
   },
   {
-    version: '2.0',
-    name: '患者端收费',
-    status: '放弃',
-    logic: ['提出假设：患者付费维持运营', '市场验证：患者家庭经济压力大', '主动证伪 → 放弃'],
-    color: '#F44336',
-    bg: 'rgba(244,67,54,0.04)',
+    label: 'AI',
+    pillar: 'PILLAR 02',
+    title: '计算与智能能力',
+    keywords: ['大语言模型', '多智能体系统', 'ArguLoop论辩'],
+    bullets: [
+      '大模型与多智能体',
+      '检索增强生成 (RAG)',
+      '动态论辩机制',
+    ],
+    color: '#78A6FF',
+    icon: '◆',
   },
   {
-    version: '3.0',
-    name: '按例撮合费',
-    status: '放弃',
-    logic: ['提出假设：每次转诊收撮合费', '市场验证：转诊量级不足以支撑', '主动证伪 → 放弃'],
-    color: '#F44336',
-    bg: 'rgba(244,67,54,0.04)',
-  },
-  {
-    version: '4.0',
-    name: '直接承接CRO',
-    status: '放弃',
-    logic: ['提出假设：承接药企临床外包', '市场验证：需专业BD与交付团队', '主动证伪 → 放弃'],
-    color: '#F44336',
-    bg: 'rgba(244,67,54,0.04)',
-  },
-  {
-    version: '5.0',
-    name: '诊断后服务体系',
-    status: '收敛',
-    logic: ['提出假设：聚焦医生科研切入口', '市场验证：签署合作意向书', '最终收敛 → PAP+RWE'],
-    color: '#4CAF50',
-    bg: 'rgba(76,175,80,0.06)',
+    label: '医疗',
+    pillar: 'PILLAR 03',
+    title: '真实问题与场景',
+    keywords: ['罕见病诊断', '循证推理', '真实世界数据'],
+    bullets: [
+      '罕见病临床场景',
+      'PAP 全病程数据',
+      'RWE 真实世界证据',
+    ],
+    color: '#E8B35C',
+    icon: '✦',
   },
 ]
 
-// 底部核心引用
-const conclusion = ref('不是从未犯错，而是在不断证伪中走向正确')
+// 核心案例：贝叶斯仲裁器（放大展示）
+const bayesCase = {
+  title: '贝叶斯仲裁器',
+  subtitle: '数学 × AI × 医疗的交汇点',
+  description: '负责人是计算科学/数学专业，将概率与贝叶斯原理迁移到医疗场景，同时结合计算机代码与人工智能，在罕见病诊疗中实际应用。',
+  steps: [
+    { phase: 'S1 快思考', result: 'A 70% · B 20% · C 10%', color: '#FF9800' },
+    { phase: 'S2 慢推理', result: '关键基因证据指向 B', color: '#3C8DFF' },
+    { phase: 'ArguLoop', result: '证据冲突，触发辩论', color: '#78A6FF' },
+    { phase: '贝叶斯仲裁', result: 'A 30% · B 62% · C 8%', color: '#4CAF50' },
+  ],
+}
+
+// 底部核心句
+const coreSentence = ref('数学给出推理规则，AI赋予计算能力，医疗提供真实问题 —— 三者交汇于贝叶斯仲裁器')
 </script>
 
 <template>
-  <div class="slide-practice">
+  <div class="slide-iteration">
     <SlideBg />
 
     <div class="content">
@@ -78,60 +91,87 @@ const conclusion = ref('不是从未犯错，而是在不断证伪中走向正�
         <h1 class="slogan">{{ slogan }}</h1>
       </div>
 
-      <!-- 1.0→5.0 版本迭代（简化每列） -->
-      <div class="versions">
+      <!-- 三栏（数学 → AI → 医疗） -->
+      <div class="pillars">
         <div
-          v-for="(v, i) in versions"
+          v-for="(p, i) in pillars"
           :key="i"
-          class="version-col"
-          :class="v.status === '收敛' ? 'kept' : 'abandoned'"
-          :style="{ '--v-color': v.color, '--v-bg': v.bg }"
+          class="pillar"
+          :style="{ '--pillar-color': p.color }"
         >
-          <!-- 版本号 -->
-          <div class="v-number">{{ v.version }}</div>
-
-          <!-- 状态标签 -->
-          <div class="v-status">{{ v.status }}</div>
-
-          <!-- 版本名称 -->
-          <div class="v-name">{{ v.name }}</div>
-
-          <!-- 证伪逻辑（最多3项） -->
-          <div class="v-logic">
-            <div
-              v-for="(line, j) in v.logic"
-              :key="j"
-              class="logic-line"
-            >{{ line }}</div>
+          <!-- 顶部：序号 + icon + 大标签 -->
+          <div class="pillar-head">
+            <div class="pillar-pillar">{{ p.pillar }}</div>
+            <div class="pillar-icon">{{ p.icon }}</div>
+            <div class="pillar-label">{{ p.label }}</div>
           </div>
 
-          <!-- 连接箭头 -->
-          <div v-if="i < versions.length - 1" class="v-arrow">
-            <div class="arrow-body">›</div>
+          <!-- 标题 -->
+          <div class="pillar-title">{{ p.title }}</div>
+
+          <!-- 同一基线列表 -->
+          <ul class="pillar-list">
+            <li
+              v-for="(kw, j) in p.bullets"
+              :key="j"
+              class="pillar-list-item"
+            >
+              <span class="kw-bullet">·</span>
+              <span>{{ kw }}</span>
+            </li>
+          </ul>
+
+          <!-- 关键词标签（同一基线） -->
+          <div class="pillar-keywords">
+            <span
+              v-for="(kw, j) in p.keywords"
+              :key="j"
+              class="kw-tag"
+            >{{ kw }}</span>
+          </div>
+
+          <!-- 底部对齐锚 -->
+          <div class="pillar-foot"></div>
+
+          <!-- 连接箭头（除最后一个） -->
+          <div v-if="i < pillars.length - 1" class="pillar-arrow">→</div>
+        </div>
+      </div>
+
+      <!-- 核心案例：贝叶斯仲裁器 -->
+      <div class="case">
+        <div class="case-left">
+          <div class="case-badge">核心案例</div>
+          <h3 class="case-title">{{ bayesCase.title }}</h3>
+          <div class="case-subtitle">{{ bayesCase.subtitle }}</div>
+          <p class="case-description">{{ bayesCase.description }}</p>
+        </div>
+        <div class="case-right">
+          <div
+            v-for="(s, i) in bayesCase.steps"
+            :key="i"
+            class="case-step"
+            :style="{ '--step-color': s.color }"
+          >
+            <div class="cs-phase">{{ s.phase }}</div>
+            <div class="cs-result">{{ s.result }}</div>
+            <div v-if="i < bayesCase.steps.length - 1" class="cs-arrow">↓</div>
           </div>
         </div>
       </div>
 
-      <!-- 底部：核心引用 + 数字 -->
-      <div class="bottom">
-        <div class="conclusion">
-          <span class="cq-mark">❝</span>
-          <span class="cq-text">{{ conclusion }}</span>
-        </div>
-        <div class="version-count">
-          <span class="vc-red">5</span>
-          <span class="vc-label">次主动证伪</span>
-          <span class="vc-divider">/</span>
-          <span class="vc-green">1</span>
-          <span class="vc-label">次收敛</span>
-        </div>
+      <!-- 底部核心句 -->
+      <div class="core-sentence">
+        <span class="cs-mark">"</span>
+        <span class="cs-text">{{ coreSentence }}</span>
+        <span class="cs-mark">"</span>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.slide-practice {
+.slide-iteration {
   width: 1920px;
   height: 1080px;
   position: relative;
@@ -139,17 +179,15 @@ const conclusion = ref('不是从未犯错，而是在不断证伪中走向正�
   color: white;
   font-family: var(--font-display);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .content {
   position: relative;
   z-index: var(--z-base);
-  padding: 48px 80px 36px;
+  padding: 36px 80px 32px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 14px;
   height: 100%;
   min-height: 0;
 }
@@ -158,14 +196,14 @@ const conclusion = ref('不是从未犯错，而是在不断证伪中走向正�
 .top {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
 .slogan {
   margin: 0;
   padding: 0;
-  font-size: var(--text-4xl);
+  font-size: var(--text-3xl);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: 4px;
@@ -175,163 +213,283 @@ const conclusion = ref('不是从未犯错，而是在不断证伪中走向正�
   background-clip: text;
 }
 
-/* 1.0→5.0 版本迭代 */
-.versions {
-  display: flex;
-  align-items: stretch;
-  flex: 1;
-  min-height: 0;
-  gap: 0;
+/* ==== 三栏：同顶线/同底线/同宽/列表同一基线 ==== */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  /* 三栏必须同宽：grid 已保证 */
+  flex-shrink: 0;
 }
 
-.version-col {
+.pillar {
   position: relative;
-  padding: 24px 20px;
-  background: var(--v-bg);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-top: 3px solid var(--v-color);
+  padding: 18px 22px 16px 22px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--pillar-color) 8%, transparent) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 3px solid var(--pillar-color);
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
+  /* 强制对齐：同顶线/同底线 */
+  align-items: stretch;
+  min-height: 320px;
+}
+
+.pillar-head {
+  display: flex;
+  align-items: baseline;
   gap: 10px;
-  flex: 1;
-  min-width: 0;
+  flex-shrink: 0;
+  /* 顶部对齐锚：所有栏的同一基线 */
 }
 
-.version-col.kept {
-  border-color: rgba(76,175,80,0.20);
-  box-shadow: 0 0 20px rgba(76,175,80,0.12);
-}
-
-.version-col.abandoned {
-  opacity: 0.85;
-}
-
-.v-number {
-  font-size: 40px;
-  font-weight: 900;
-  font-family: var(--font-mono);
-  background: linear-gradient(135deg, var(--v-color), rgba(255,255,255,0.5));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.pillar-pillar {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: var(--pillar-color);
+  font-weight: 600;
+  opacity: 0.65;
   line-height: 1;
 }
 
-.v-status {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-size: 12px;
+.pillar-icon {
+  font-size: 36px;
   font-weight: 700;
-  letter-spacing: 2px;
-  background: color-mix(in srgb, var(--v-color) 20%, transparent);
-  color: var(--v-color);
-  border: 1px solid color-mix(in srgb, var(--v-color) 40%, transparent);
-  align-self: flex-start;
+  color: var(--pillar-color);
+  line-height: 1;
+  margin-left: auto;
+  opacity: 0.7;
 }
 
-.v-name {
-  font-size: var(--text-lg);
-  font-weight: 700;
+.pillar-label {
+  font-size: 36px;
+  font-weight: 800;
   color: white;
-  line-height: 1.3;
+  letter-spacing: 4px;
+  line-height: 1;
+  flex: 1;
+  min-height: 36px;
+  /* 保证中文字标签垂直居中或顶部对齐 */
+  display: flex;
+  align-items: center;
 }
 
-.v-logic {
+.pillar-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pillar-color);
+  margin: 12px 0 14px 0;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  flex-shrink: 0;
+  /* 同一基线：标题块起止位置一致 */
+  min-height: 30px;
+}
+
+.pillar-list {
+  list-style: none;
+  margin: 0 0 14px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  /* 列表同一基线：固定条高度 */
+  flex: 1;
+}
+
+.pillar-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* 关键：每条高度统一，保证三栏同一基线 */
+  height: 38px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+  line-height: 1;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.kw-bullet {
+  color: var(--pillar-color);
+  font-weight: 700;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.pillar-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  /* 关键词标签：同一基线（与 pillar-foot 对齐） */
+  min-height: 32px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.kw-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: color-mix(in srgb, var(--pillar-color) 15%, transparent);
+  color: var(--pillar-color);
+  border-radius: 999px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* 底部对齐锚：保证三栏底部在同一基线 */
+.pillar-foot {
+  height: 0;
+  margin-top: auto;
+  border-top: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+/* 箭头（同一水平线：三栏中部） */
+.pillar-arrow {
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28px;
+  font-weight: 900;
+  color: rgba(57, 141, 255, 0.6);
+  z-index: 5;
+  background: var(--color-bg);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(57, 141, 255, 0.3);
+}
+
+/* ==== 核心案例：贝叶斯仲裁器 ==== */
+.case {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 18px;
+  padding: 16px 22px;
+  background: rgba(76, 175, 80, 0.04);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.case-left {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  justify-content: center;
 }
 
-.logic-line {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-  font-weight: 300;
-  line-height: 1.5;
+.case-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  background: rgba(76, 175, 80, 0.18);
+  color: #4CAF50;
+  border-radius: 999px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  align-self: flex-start;
 }
 
-/* 连接箭头 */
-.v-arrow {
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
-  flex-shrink: 0;
-}
-
-.arrow-body {
-  font-size: 32px;
-  color: rgba(57,141,255,0.5);
-  line-height: 1;
-}
-
-/* 底部 */
-.bottom {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  padding: 18px 24px;
-  border-top: 1px solid rgba(57,141,255,0.15);
-  flex-shrink: 0;
-}
-
-.conclusion {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.cq-mark {
+.case-title {
+  margin: 0;
   font-size: 28px;
-  color: rgba(57,141,255,0.6);
-  line-height: 1;
-}
-
-.cq-text {
-  font-size: var(--text-xl);
-  font-weight: 700;
+  font-weight: 800;
   color: white;
   letter-spacing: 2px;
 }
 
-.version-count {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 10px 20px;
-  background: rgba(57,141,255,0.08);
-  border: 1px solid rgba(57,141,255,0.20);
-  border-radius: var(--radius-md);
-}
-
-.vc-red {
-  font-size: 36px;
-  font-weight: 900;
-  font-family: var(--font-mono);
-  color: #F44336;
-  line-height: 1;
-}
-
-.vc-green {
-  font-size: 36px;
-  font-weight: 900;
-  font-family: var(--font-mono);
+.case-subtitle {
+  font-size: 20px;
   color: #4CAF50;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.case-description {
+  margin: 0;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.case-right {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.case-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid color-mix(in srgb, var(--step-color) 30%, transparent);
+  border-radius: var(--radius-sm);
+  position: relative;
+  /* 关键：四条同顶线/同底线/内部对齐 */
+  justify-content: center;
+  min-height: 100px;
+}
+
+.cs-phase {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--step-color);
+  letter-spacing: 1px;
+}
+
+.cs-result {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-mono);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.cs-arrow {
+  position: absolute;
+  bottom: -4px;
+  right: 6px;
+  font-size: 14px;
+  color: var(--step-color);
+  opacity: 0.6;
+}
+
+/* 底部核心句 */
+.core-sentence {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(57, 141, 255, 0.2);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.cs-mark {
+  font-size: 28px;
+  color: rgba(57, 141, 255, 0.6);
   line-height: 1;
+  font-weight: 700;
 }
 
-.vc-label {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
-}
-
-.vc-divider {
-  font-size: var(--text-sm);
-  color: rgba(255,255,255,0.2);
-  margin: 0 4px;
+.cs-text {
+  font-size: 20px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-align: center;
 }
 </style>

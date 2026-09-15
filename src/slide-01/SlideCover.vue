@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import logoUrl from '@assets/images/icons/project-logo.png'
+// 导入封面背景图（罕见病 + DNA + 生命科技）
+import coverBgUrl from '@assets/images/content/extra-materials/1-封面.png'
 
 const title = ref('罕见病科研与准入的嵌入式服务基础设施')
 const subtitle = ref('AngelRare')
@@ -12,11 +14,13 @@ const group = ref('本科生组')
 
 <template>
   <div class="slide-cover">
-    <!-- 多层背景 -->
+    <!-- 主视觉背景图：罕见病 + DNA + 生命科技 -->
+    <div class="bg-cover-image"></div>
+
+    <!-- 多层背景叠加（保留暗色科技氛围与渐变遮罩） -->
     <div class="bg-layer-1"></div>
     <div class="bg-layer-2"></div>
     <div class="bg-layer-3"></div>
-    <div class="bg-layer-4"></div>
     <div class="bg-glow-tl"></div>
     <div class="bg-glow-br"></div>
     <div class="bg-dna-grid"></div>
@@ -74,60 +78,96 @@ const group = ref('本科生组')
   font-family: var(--font-display);
 }
 
-/* 多层背景 */
+/* ==== 主视觉背景图：罕见病 + DNA + 生命科技 ==== */
+.bg-cover-image {
+  position: absolute;
+  inset: 0;
+  background-image: v-bind('"url(" + coverBgUrl + ")"');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  /* 适度提亮，让主图真正可见，但不抢标题 */
+  opacity: 0.78;
+  filter: brightness(1.05) contrast(1.08) saturate(1.1);
+  z-index: 0;
+}
+
+/* ==== 渐变遮罩：保护标题区 ==== */
+/* 顶部 + 底部暗色蒙版，确保标题阅读 + 副标题清晰 */
 .bg-layer-1 {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 120% 80% at 50% 0%, #040819 0%, #020817 60%, #010610 100%);
+  background:
+    /* 标题区加强遮罩 */
+    linear-gradient(180deg,
+      rgba(2, 8, 23, 0.78) 0%,
+      rgba(2, 8, 23, 0.55) 18%,
+      rgba(2, 8, 23, 0.30) 35%,
+      rgba(2, 8, 23, 0.18) 55%,
+      rgba(2, 8, 23, 0.35) 75%,
+      rgba(2, 8, 23, 0.85) 100%
+    );
+  z-index: 1;
 }
+
+/* 蓝色科技光晕 */
 .bg-layer-2 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(47, 128, 255, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(232, 179, 92, 0.05) 0%, transparent 70%);
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(47, 128, 255, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 80%, rgba(232, 179, 92, 0.12) 0%, transparent 70%);
+  z-index: 2;
 }
+
+/* 中央暗角聚焦到标题 */
 .bg-layer-3 {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 30%, rgba(2, 8, 23, 0.7) 100%);
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(2, 8, 23, 0.35) 0%, transparent 70%);
+  z-index: 3;
 }
-.bg-layer-4 {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(57, 141, 255, 0.03) 0%, transparent 40%);
-}
+
+/* 左上角蓝色光斑 */
 .bg-glow-tl {
   position: absolute;
   top: -200px;
   left: -200px;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(47, 128, 255, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(47, 128, 255, 0.22) 0%, transparent 70%);
   filter: blur(60px);
+  z-index: 4;
 }
+
+/* 右下角金色光斑 */
 .bg-glow-br {
   position: absolute;
   bottom: -200px;
   right: -200px;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(232, 179, 92, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 179, 92, 0.18) 0%, transparent 70%);
   filter: blur(60px);
+  z-index: 5;
 }
+
+/* DNA 网格（科技感）*/
 .bg-dna-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(57, 141, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(57, 141, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(57, 141, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 141, 255, 0.05) 1px, transparent 1px);
   background-size: 100px 100px;
+  z-index: 6;
+  opacity: 0.6;
 }
 
 /* 主内容 */
 .content {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
   height: 100%;
   display: flex;
@@ -151,7 +191,7 @@ const group = ref('本科生组')
 .logo-glow {
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle, rgba(232, 179, 92, 0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 179, 92, 0.35) 0%, transparent 70%);
   filter: blur(20px);
   z-index: 1;
 }
@@ -179,6 +219,7 @@ const group = ref('本科生组')
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 .divider {
   width: 160px;
@@ -189,9 +230,10 @@ const group = ref('本科生组')
 }
 .subtitle-en {
   font-size: var(--text-base);
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
   letter-spacing: 3px;
   font-weight: 300;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
 }
 
 /* 底部信息栏 */
@@ -201,8 +243,8 @@ const group = ref('本科生组')
   align-items: center;
   gap: 0;
   padding: 28px 60px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 14, 32, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(20px);
 }
@@ -216,7 +258,7 @@ const group = ref('本科生组')
 }
 .info-label {
   font-size: var(--text-xs);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   letter-spacing: 3px;
   text-transform: uppercase;
 }
@@ -230,7 +272,7 @@ const group = ref('本科生组')
 .info-divider {
   width: 1px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
 }
 </style>
