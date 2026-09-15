@@ -1,0 +1,66 @@
+{
+  "slide-01": {
+    "type": "cover",
+    "title": "罕见病科研与准入的嵌入式服务基础设施",
+    "subtitle": "AngelRare",
+    "subtitleEn": "Embedded Service Infrastructure for Rare Disease Research and Access",
+    "info": {
+      "leader": "郭俨霆",
+      "track": "高教主赛道",
+      "school": "云南大学",
+      "group": "本科生组"
+    }
+  },
+  "slide-02": {
+    "type": "agenda",
+    "sections": [
+      {
+        "num": "01",
+        "title": "个人成长",
+        "slogan": "把青春写在国家需要的地方",
+        "items": ["立德树人", "调研深入", "逻辑正确", "知识掌握与应用能力", "人才培养成效"]
+      },
+      {
+        "num": "02",
+        "title": "项目创新",
+        "slogan": "不只生成答案，更要证明答案",
+        "items": ["问题导向", "目标导向", "创新成效"]
+      },
+      {
+        "num": "03",
+        "title": "产业价值",
+        "slogan": "诊断不是终点，而是服务的起点",
+        "items": ["产业认知", "市场定位", "落地前景", "社会影响"]
+      },
+      {
+        "num": "04",
+        "title": "团队协作",
+        "slogan": "敢想 · 会创 · 同行 · 共进",
+        "items": ["团队精神", "团队结构", "团队效能", "团队资源"]
+      }
+    ]
+  },
+  "slide-03": {
+    "type": "chapter-cover",
+    "chapterNum": "01",
+    "chapterTitle": "个人成长",
+    "chapterSubtitle": "Problem Insight & Personal Growth",
+    "quote": "真实问题驱动，成长贯穿始终",
+    "desc": "从课堂到基层，从迷茫到担当 —— 学生团队在真实痛点中完成蜕变"
+  },
+  "slide-04": {
+    "type": "story-intro",
+    "title": "故事引入",
+    "stories": [
+      {
+        "name": "允小姐的姐姐",
+        "desc": "从婴儿期异常发烧到确诊，辗转多地做遍基因测序，二十八岁才获最终确诊——错失的是整个童年与青春。"
+      },
+      {
+        "name": "19岁疑似患者小胡",
+        "desc": "因基层无法明确诊断，错过黄金干预期，高昂往返排查费用让家庭甚至产生放弃就医心理。"
+      }
+    ],
+    "summary": "患者访谈记录中，没有冰冷数据，只有一个个被困在未知里的家庭。这些真实回音成为团队持续优化算法的动力。"
+  }
+}

@@ -1,0 +1,70 @@
+/* ================================
+ * 全局样式
+ * - 通用工具类
+ * - 全屏 PPT 容器
+ * - 滚动条美化
+ * ================================ */
+
+/* ---- 全屏 PPT 容器（每页都铺满）---- */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- 设计稿尺寸适配（按 1920×1080 等比缩放）---- */
+.slide-canvas {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  transform-origin: center center;
+  /* transform: scale 由 JS 动态设置 */
+}
+
+/* ---- 通用文本样式 ---- */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- 滚动条美化 ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* ---- 选中文本 ---- */
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* ---- 焦点可见（无障碍）---- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---- fullpage.js 兼容样式（避免滚动冲突）---- */
+.fp-watermark {
+  display: none !important;
+}

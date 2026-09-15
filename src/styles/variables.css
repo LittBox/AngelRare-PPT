@@ -1,0 +1,103 @@
+/* ================================
+ * CSS 主题变量
+ * 配色依据：design-reference.pptx 实际使用的颜色
+ * 集中管理：颜色、字体、间距、动画时长
+ * 修改这里即可全局生效
+ * ================================ */
+
+:root {
+  /* ---- 主色板（基于设计稿真实配色）---- */
+  --color-primary: #4673C5;         /* 主色：宝石蓝（设计稿使用频次高）*/
+  --color-primary-light: #6592EC;   /* 亮蓝（强调）*/
+  --color-primary-dark: #2261BB;    /* 深蓝 */
+
+  /* ---- 强调色（金棕色 + 金黄色 - 设计稿标志色）---- */
+  --color-accent: #E8BD7C;          /* 金棕色：设计稿 143 次出现，核心标志色 */
+  --color-accent-light: #FFC000;    /* 金黄色（辅助强调）*/
+  --color-accent-warm: #C00000;     /* 深红（重要警示）*/
+
+  /* ---- 浅蓝色系（卡片背景）---- */
+  --color-blue-soft: #BDE3F5;        /* 极浅蓝 */
+  --color-blue-soft-2: #A2D8F0;      /* 浅蓝 */
+  --color-blue-soft-3: #C7D8EB;      /* 灰蓝 */
+  --color-blue-sky: #1AAFE7;         /* 天空蓝 */
+
+  /* ---- 中性色 ---- */
+  --color-bg: #000B30;               /* 主背景：深蓝（设计稿使用 45 次）*/
+  --color-bg-deep: #00030D;          /* 更深背景 */
+  --color-bg-soft: #0E2841;          /* 次级背景（设计稿主题色之一）*/
+  --color-surface: #142D52;          /* 卡片表面 */
+  --color-surface-2: #1A3A66;        /* 卡片表面 2 */
+  --color-text: #FFFFFF;             /* 主文字 */
+  --color-text-soft: #E9F2F5;        /* 柔和白 */
+  --color-text-muted: #C7D8EB;       /* 次文字 */
+  --color-text-dim: #5DA2C1;         /* 弱化文字 */
+  --color-border: #1A3A66;           /* 边框 */
+  --color-divider: #4676C7;          /* 分隔线 */
+
+  /* ---- 状态色 ---- */
+  --color-success: #4EA72E;
+  --color-warning: #E97132;
+  --color-danger: #C00000;
+
+  /* ---- 字体 ---- */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei',
+    'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', monospace;
+  --font-display: '黑体', 'Heiti SC', 'STHeiti', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-heading: 'FZXiaoBiaoSong-B05S', '方正小标宋简体', '黑体', sans-serif;
+  --font-cursive: 'Kaiti SC', 'KaiTi', '楷体', serif;
+
+  /* ---- 字号（基于 1920×1080 设计稿，参考 ppt-master 字号指南）---- */
+  --text-xs: 14px;
+  --text-sm: 16px;
+  --text-base: 20px;        /* 参考 ppt-master: ppt169 presentation 模式初始 32，对应 1920 缩放 */
+  --text-lg: 24px;
+  --text-xl: 30px;
+  --text-2xl: 38px;
+  --text-3xl: 50px;
+  --text-4xl: 66px;
+  --text-5xl: 88px;
+
+  /* ---- 间距 ---- */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-8: 96px;
+
+  /* ---- 圆角 ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* ---- 阴影（蓝色调阴影匹配设计稿）---- */
+  --shadow-sm: 0 2px 8px rgba(0, 11, 48, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 11, 48, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 11, 48, 0.5);
+  --shadow-glow-blue: 0 0 32px rgba(70, 115, 197, 0.4);
+  --shadow-glow-gold: 0 0 32px rgba(232, 189, 124, 0.4);
+
+  /* ---- 动画 ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
+  --duration-slow: 800ms;
+
+  /* ---- Z-index 层级 ---- */
+  --z-base: 1;
+  --z-overlay: 10;
+  --z-modal: 100;
+  --z-toast: 1000;
+
+  /* ---- PPT 画布（16:9 标准）---- */
+  --slide-width: 1920px;
+  --slide-height: 1080px;
+  --slide-scale: 1;  /* 由 JS 根据窗口动态计算 */
+}
