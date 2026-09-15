@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideTeamStructure.vue
  * 第 23 页：项目团队分工
@@ -10,6 +12,10 @@
  * - 社交媒体运营 / 活动策划 / 临床需求洞察 / 市场商业分析 / 品牌营销 / 社群运营 / 视频、文案 / 财务与量化分析
  * - 团队成员各展所长、协同推进
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('团队结构')
+const slogan = ref('各有所长，彼此成就')
+
 const departments = [
   {
     name: '技术研发',
@@ -35,10 +41,11 @@ const departments = [
 <template>
   <div class="slide-struct">
     <div class="header">
-      <div class="badge">团队结构</div>
-      <h1 class="title">多元专业 · 协同分工</h1>
-      <p class="subtitle">团队成员各展所长、协同推进 —— 一个纯计算机团队做不出能落地的医疗 AI，一个纯医学团队也实现不了多智能体系统</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <div class="dept-grid">
       <div v-for="(dept, i) in departments" :key="i" class="dept-card">
@@ -65,15 +72,27 @@ const departments = [
 }
 .header { margin-bottom: 40px; text-align: center; }
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(74, 108, 247, 0.15); color: var(--color-accent);
-  border: 1px solid rgba(74, 108, 247, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 16px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px; margin-bottom: 12px; }
-.subtitle {
-  font-size: var(--text-base); color: var(--color-text-muted);
-  font-weight: 300; max-width: 1500px; margin: 0 auto; line-height: 1.7;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .dept-grid {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;

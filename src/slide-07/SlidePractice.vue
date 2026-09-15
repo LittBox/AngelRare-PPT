@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlidePractice.vue
  * 第 7 页：实践足迹（时间线）
@@ -11,6 +13,10 @@
  * - 2026.01 初代产品问世
  * - 2026.04 社交平台正式开启运营
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('逻辑正确')
+const slogan = ref('在证伪中，走向正确')
+
 const milestones = [
   { date: '2025.02', title: '团队正式成立', desc: '项目团队组建，确立罕见病方向' },
   { date: '2025.07', title: '患者线上访谈', desc: '与罕见病患者深度访谈，了解实际情况' },
@@ -24,9 +30,11 @@ const milestones = [
 <template>
   <div class="slide-practice">
     <div class="header">
-      <div class="badge">实践足迹</div>
-      <h1 class="title">步履不停 · 让想法走进现实</h1>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <div class="timeline-container">
       <div class="timeline-line"></div>
@@ -57,25 +65,32 @@ const milestones = [
 }
 
 .header {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .badge {
   display: inline-block;
-  padding: 8px 20px;
-  background: rgba(74, 108, 247, 0.15);
-  color: var(--color-accent);
-  border: 1px solid rgba(74, 108, 247, 0.3);
-  border-radius: var(--radius-full);
-  font-size: var(--text-sm);
-  letter-spacing: 4px;
-  margin-bottom: 20px;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
 
-.title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  letter-spacing: 4px;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .timeline-container {

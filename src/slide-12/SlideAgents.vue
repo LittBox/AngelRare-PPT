@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideAgents.vue
  * 第 12 页：SR Agent + DP Agent 技术
@@ -10,6 +12,10 @@
  * - DP Agent: 物理文档解析与结构化抽取
  *   DP Agent（文档处理智能体）调用 MinerU 高精度解析引擎与 BioBERT 医学专科预训练模型，将关键...
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('目标导向')
+const slogan = ref('从真实需求出发，让产品不断收敛')
+
 const agents = [
   {
     code: 'SR',
@@ -33,10 +39,11 @@ const agents = [
 <template>
   <div class="slide-agents">
     <div class="header">
-      <div class="badge">核心智能体</div>
-      <h1 class="title">七大智能体协同：技术与架构</h1>
-      <p class="subtitle">从数据摄入到证据融合，每一环节都有专业 Agent 守门</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <div class="agents-grid">
       <div v-for="(a, i) in agents" :key="i" class="agent-card">
@@ -63,15 +70,32 @@ const agents = [
   position: relative;
   overflow: hidden;
 }
-.header { margin-bottom: 60px; }
-.badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(0, 212, 255, 0.15); color: var(--color-accent);
-  border: 1px solid rgba(0, 212, 255, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 20px;
+.header {
+  margin-bottom: 30px;
 }
-.title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px; margin-bottom: 12px; }
-.subtitle { font-size: var(--text-lg); color: var(--color-text-muted); font-weight: 300; letter-spacing: 2px; }
+.badge {
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
+}
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .agents-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

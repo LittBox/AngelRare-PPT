@@ -21,10 +21,8 @@ Thumbs.db
 ._*
 
 # 临时导出
-export/screenshots/*.png
-!export/screenshots/.gitkeep
+export/screenshots/
 export/pptx/*.pptx
-!export/pptx/.gitkeep
 
 # 环境
 .env

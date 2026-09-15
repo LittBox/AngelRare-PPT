@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideBusinessModel.vue
  * 第 17 页：商业模式（数据飞轮）
@@ -9,6 +11,10 @@
  * - 三条收入线闭环，18 个月净盈余 194 万元
  * - 数据越用越厚 / 服务越做越强 / 客户越用越黏 / 生态越转越大
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('产业认知')
+const slogan = ref('诊断不是终点，而是服务的起点')
+
 const flywheel = [
   { name: '数据越用越厚', desc: '医生病例 → PAP 全病程数据 → RWE → 更多产业服务' },
   { name: '服务越做越强', desc: '数据积累降低重复采集成本，提升科研与 RWE 交付效率' },
@@ -25,10 +31,11 @@ const revenueLines = [
 <template>
   <div class="slide-bm">
     <div class="header">
-      <div class="badge">商业模式创新</div>
-      <h1 class="title">非对称支付驱动数据飞轮</h1>
-      <p class="subtitle">让最需要帮助的人，不成为买单的人 —— 三条收入线闭环，18 个月净盈余 194 万元</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 飞轮四要素 -->
     <div class="flywheel-grid">
@@ -63,20 +70,32 @@ const revenueLines = [
   position: relative;
   overflow: hidden;
 }
-.header { margin-bottom: 32px; }
+.header {
+  margin-bottom: 30px;
+}
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(76, 175, 80, 0.15); color: #81c784;
-  border: 1px solid rgba(76, 175, 80, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 16px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title {
-  font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px;
-  background: linear-gradient(135deg, #ffffff 0%, #81c784 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 8px;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.subtitle { font-size: var(--text-base); color: var(--color-text-muted); font-weight: 300; }
 .flywheel-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
   margin-bottom: 32px;

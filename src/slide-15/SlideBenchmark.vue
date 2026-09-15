@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideBenchmark.vue
  * 第 15 页：MedBrowseComp 测评
@@ -9,6 +11,10 @@
  * - 验证该系统在真实复杂领域有较强的应对能力
  * - MedBrowseComp 是由哈佛大学...
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('创新成效｜商业模式创新')
+const slogan = ref('每一次服务，都让下一次更有价值')
+
 const competitors = [
   { name: 'AngelRare', score: 72.5, rank: 1, highlight: true },
   { name: 'Gemini 2.5 Pro', score: 68.2, rank: 2, highlight: false },
@@ -20,10 +26,11 @@ const competitors = [
 <template>
   <div class="slide-bench">
     <div class="header">
-      <div class="badge">权威测评</div>
-      <h1 class="title">MedBrowseComp 测评结果</h1>
-      <p class="subtitle">由哈佛大学发布的医学领域权威基准测试，1000+ 道题目真实场景验证</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 横条图 -->
     <div class="bars">
@@ -68,18 +75,28 @@ const competitors = [
 }
 .header { margin-bottom: 60px; text-align: center; }
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(255, 152, 0, 0.15); color: #ffb74d;
-  border: 1px solid rgba(255, 152, 0, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 20px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title {
-  font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px;
-  background: linear-gradient(135deg, #ffffff 0%, #ffd180 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 12px;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.subtitle { font-size: var(--text-lg); color: var(--color-text-muted); font-weight: 300; }
 .bars {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);

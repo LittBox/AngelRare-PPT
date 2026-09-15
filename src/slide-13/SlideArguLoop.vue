@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideArguLoop.vue
  * 第 13 页：ArguLoop 论辩机制（核心技术创新）
@@ -10,6 +12,10 @@
  *
  * 这是网评 PPT 最值得讲清楚的技术创新点
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('创新成效｜技术创新')
+const slogan = ref('不只生成答案，更要证明答案（从普通生成式 AI 走向"可循证、可质证、可仲裁"）')
+
 const steps = [
   { num: '01', name: '发现冲突', desc: '多个 Agent 出现证据冲突' },
   { num: '02', name: '发起攻击', desc: '质疑方 Agent 发起质证' },
@@ -21,10 +27,11 @@ const steps = [
 <template>
   <div class="slide-arguloop">
     <div class="header">
-      <div class="badge">技术创新</div>
-      <h1 class="title">ArguLoop 动态论辩攻防机制</h1>
-      <p class="subtitle">不让多个 AI 靠投票解决分歧，而是让它们像法庭质证一样，用原始证据互相辩论</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 问题对比 -->
     <div class="comparison">
@@ -73,20 +80,27 @@ const steps = [
 }
 .header { margin-bottom: 32px; text-align: center; }
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(255, 152, 0, 0.15); color: #ffb74d;
-  border: 1px solid rgba(255, 152, 0, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 16px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title {
-  font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px;
-  background: linear-gradient(135deg, #ffffff 0%, #ffd180 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 12px;
-}
-.subtitle {
-  font-size: var(--text-base); color: var(--color-text-muted);
-  font-weight: 300; letter-spacing: 2px; max-width: 1400px; margin: 0 auto;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .comparison {
   display: flex;

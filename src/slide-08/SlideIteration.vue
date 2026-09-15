@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideIteration.vue
  * 第 8 页：产品迭代 1.0-5.0（证伪过程）
@@ -11,6 +13,10 @@
  * - 4.0 药企准入 / 5.0 PAP 管理
  * - 放弃疾病组合收费、放弃 CRO 直接承接
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('知识掌握与应用能力')
+const slogan = ref('所学不止于书本，所知终用于真实')
+
 const iterations = [
   { version: '1.0', name: '四方多边平台', status: '放弃', reason: '建设与信任成本过高', kept: false },
   { version: '2.0', name: '患者端收费', status: '放弃', reason: '资源消耗超出早期团队承载力', kept: false },
@@ -23,10 +29,11 @@ const iterations = [
 <template>
   <div class="slide-iter">
     <div class="header">
-      <div class="badge">产品迭代</div>
-      <h1 class="title">从 1.0 到 5.0 的五次主动收缩</h1>
-      <p class="subtitle">不是从未犯错，而是在不断证伪中走向正确</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <div class="iter-grid">
       <div
@@ -59,33 +66,32 @@ const iterations = [
 }
 
 .header {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .badge {
   display: inline-block;
-  padding: 8px 20px;
-  background: rgba(76, 175, 80, 0.15);
-  color: #81c784;
-  border: 1px solid rgba(76, 175, 80, 0.3);
-  border-radius: var(--radius-full);
-  font-size: var(--text-sm);
-  letter-spacing: 4px;
-  margin-bottom: 20px;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
 
-.title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  letter-spacing: 4px;
-  margin-bottom: 16px;
-}
-
-.subtitle {
-  font-size: var(--text-lg);
-  color: var(--color-text-muted);
-  font-weight: 300;
-  letter-spacing: 2px;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .iter-grid {

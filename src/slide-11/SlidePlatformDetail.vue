@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlidePlatformDetail.vue
  * 第 11 页：平台介绍（详细）
@@ -6,6 +8,10 @@
  * 内容来源（参考设计稿 slide11）：
  * - 平台介绍：实现真实世界医疗数据的安全协同与持续沉淀，推动临床、科研、产业的协同闭环
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('问题导向')
+const slogan = ref('从一个人的困境，看见一群人的难题')
+
 const features = [
   {
     icon: '🔍',
@@ -33,10 +39,11 @@ const features = [
 <template>
   <div class="slide-detail">
     <div class="header">
-      <div class="badge">平台介绍</div>
-      <h1 class="title">真实世界医疗数据的安全协同与持续沉淀</h1>
-      <p class="subtitle">推动临床、科研、产业的协同闭环</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <div class="features-grid">
       <div v-for="(f, i) in features" :key="i" class="feature-card">
@@ -62,20 +69,27 @@ const features = [
 }
 .header { margin-bottom: 80px; text-align: center; }
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(74, 108, 247, 0.15); color: var(--color-accent);
-  border: 1px solid rgba(74, 108, 247, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 20px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title {
-  font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px;
-  background: linear-gradient(135deg, #ffffff 0%, #c0d0ff 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 16px;
-}
-.subtitle {
-  font-size: var(--text-lg); color: var(--color-text-muted);
-  letter-spacing: 2px; font-weight: 300;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .features-grid {
   display: grid;

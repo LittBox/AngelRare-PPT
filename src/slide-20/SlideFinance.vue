@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideFinance.vue
  * 第 20 页：财务分析
@@ -8,6 +10,10 @@
  * - 现金投入：22 万元
  * - 资源折价：45 万元
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('社会影响')
+const slogan = ref('让罕见被看见，让需要被回应')
+
 const fundSource = [
   { label: '现金投入', value: 22, color: '#4caf50' },
   { label: '资源折价', value: 45, color: '#00d4ff' }
@@ -17,10 +23,11 @@ const fundSource = [
 <template>
   <div class="slide-fin">
     <div class="header">
-      <div class="badge">财务分析</div>
-      <h1 class="title">启动资金结构与盈利能力</h1>
-      <p class="subtitle">依靠高毛利数据服务和 SaaS 订阅实现快速盈利</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 启动资金饼图 -->
     <div class="finance-grid">
@@ -86,18 +93,28 @@ const fundSource = [
 }
 .header { margin-bottom: 60px; text-align: center; }
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(76, 175, 80, 0.15); color: #81c784;
-  border: 1px solid rgba(76, 175, 80, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 20px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title {
-  font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px;
-  background: linear-gradient(135deg, #ffffff 0%, #81c784 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 12px;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.subtitle { font-size: var(--text-lg); color: var(--color-text-muted); font-weight: 300; }
 .finance-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
 }

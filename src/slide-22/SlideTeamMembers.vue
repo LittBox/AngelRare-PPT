@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideTeamMembers.vue
  * 第 22 页：核心成员介绍
@@ -19,6 +21,10 @@
  */
 import gytUrl from '@assets/images/content/team-members/学生/gyt.jpg'
 import wshUrl from '@assets/images/content/team-members/学生/wsh.jpg'
+
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('团队精神')
+const slogan = ref('敢想 · 会创 · 同行 · 共进')
 
 const leaders = [
   {
@@ -45,9 +51,11 @@ const leaders = [
 <template>
   <div class="slide-leaders">
     <div class="header">
-      <div class="badge">核心成员</div>
-      <h1 class="title">项目团队 · 核心力量</h1>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <div class="leaders-grid">
       <div v-for="(leader, i) in leaders" :key="i" class="leader-card">
@@ -82,14 +90,32 @@ const leaders = [
   padding: 60px 100px; font-family: var(--font-display);
   position: relative; overflow: hidden;
 }
-.header { margin-bottom: 40px; }
-.badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(74, 108, 247, 0.15); color: var(--color-accent);
-  border: 1px solid rgba(74, 108, 247, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 16px;
+.header {
+  margin-bottom: 30px;
 }
-.title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px; }
+.badge {
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
+}
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .leaders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; height: calc(100% - 140px); }
 .leader-card {
   display: flex; gap: 32px;

@@ -1,0 +1,246 @@
+{
+  "_meta": "PPT 完整结构 · 25 页 · 永久冻结",
+  "_structure": "1 封面 + 1 总目录 + 4 一级章节扉页 + 18 二级内容页 + 1 致谢页",
+  "_rules": [
+    "页面总数永远保持 25 页",
+    "页面顺序严格按 pageIndex",
+    "五种 type 必须区分：cover / toc / section / content / thanks",
+    "禁止删除任何一类页面（包括 cover / thanks / toc / section）",
+    "禁止以'信息量少'/'页面冗余'/'优化叙事'等理由合并任何页",
+    "修改单页视觉时不得影响其他页的存在、顺序或内容",
+    "此次任务允许修改'页面怎么设计'，不允许修改'有哪些页面、页面叫什么、页面排在哪里'"
+  ],
+  "expectedOrder": [
+    "封面", "目录", "01 个人成长", "立德树人", "调研深入",
+    "逻辑正确", "知识掌握与应用能力", "人才培养成效", "02 项目创新", "问题导向",
+    "目标导向", "创新成效｜技术创新", "创新成效｜服务模式创新", "创新成效｜商业模式创新",
+    "03 产业价值", "产业认知", "市场定位", "落地前景", "社会影响",
+    "04 团队协作", "团队精神", "团队结构", "团队效能", "团队资源",
+    "致谢"
+  ],
+  "pages": [
+    {
+      "pageIndex": 1,
+      "type": "cover",
+      "title": "封面",
+      "slideDir": "slide-01",
+      "slideComponent": "SlideCover"
+    },
+    {
+      "pageIndex": 2,
+      "type": "toc",
+      "title": "目录",
+      "slideDir": "slide-02",
+      "slideComponent": "SlideAgenda"
+    },
+    {
+      "pageIndex": 3,
+      "type": "section",
+      "section": "个人成长",
+      "sectionIndex": "01",
+      "title": "个人成长",
+      "leadText": "从真实问题中成长，在创新实践中成为更好的问题解决者",
+      "slideDir": "slide-03",
+      "slideComponent": "SlideChapter01"
+    },
+    {
+      "pageIndex": 4,
+      "type": "content",
+      "section": "个人成长",
+      "navTitle": "立德树人",
+      "slogan": "把青春写在国家需要的地方",
+      "slideDir": "slide-05",
+      "slideComponent": "SlidePolicy"
+    },
+    {
+      "pageIndex": 5,
+      "type": "content",
+      "section": "个人成长",
+      "navTitle": "调研深入",
+      "slogan": "脚下有泥，心中才有答案",
+      "slideDir": "slide-06",
+      "slideComponent": "SlideIdeaStage"
+    },
+    {
+      "pageIndex": 6,
+      "type": "content",
+      "section": "个人成长",
+      "navTitle": "逻辑正确",
+      "slogan": "在证伪中，走向正确",
+      "slideDir": "slide-07",
+      "slideComponent": "SlidePractice"
+    },
+    {
+      "pageIndex": 7,
+      "type": "content",
+      "section": "个人成长",
+      "navTitle": "知识掌握与应用能力",
+      "slogan": "所学不止于书本，所知终用于真实",
+      "slideDir": "slide-08",
+      "slideComponent": "SlideIteration"
+    },
+    {
+      "pageIndex": 8,
+      "type": "content",
+      "section": "个人成长",
+      "navTitle": "人才培养成效",
+      "slogan": "项目在成长，我们也在成长",
+      "slideDir": "slide-26",
+      "slideComponent": "SlideAchievements"
+    },
+    {
+      "pageIndex": 9,
+      "type": "section",
+      "section": "项目创新",
+      "sectionIndex": "02",
+      "title": "项目创新",
+      "leadText": "不只是生成答案，更要证明答案",
+      "slideDir": "slide-09",
+      "slideComponent": "SlideChapter02"
+    },
+    {
+      "pageIndex": 10,
+      "type": "content",
+      "section": "项目创新",
+      "navTitle": "问题导向",
+      "slogan": "从一个人的困境，看见一群人的难题",
+      "slideDir": "slide-04",
+      "slideComponent": "SlideStoryIntro"
+    },
+    {
+      "pageIndex": 11,
+      "type": "content",
+      "section": "项目创新",
+      "navTitle": "目标导向",
+      "slogan": "从真实需求出发，让产品不断收敛",
+      "slideDir": "slide-12",
+      "slideComponent": "SlideAgents"
+    },
+    {
+      "pageIndex": 12,
+      "type": "content",
+      "section": "项目创新",
+      "navTitle": "创新成效｜技术创新",
+      "slogan": "不只生成答案，更要证明答案",
+      "slideDir": "slide-13",
+      "slideComponent": "SlideArguLoop"
+    },
+    {
+      "pageIndex": 13,
+      "type": "content",
+      "section": "项目创新",
+      "navTitle": "创新成效｜服务模式创新",
+      "slogan": "让最需要帮助的人，不成为买单的人",
+      "slideDir": "slide-14",
+      "slideComponent": "SlideExpResult"
+    },
+    {
+      "pageIndex": 14,
+      "type": "content",
+      "section": "项目创新",
+      "navTitle": "创新成效｜商业模式创新",
+      "slogan": "每一次服务，都让下一次更有价值",
+      "slideDir": "slide-15",
+      "slideComponent": "SlideBenchmark"
+    },
+    {
+      "pageIndex": 15,
+      "type": "section",
+      "section": "产业价值",
+      "sectionIndex": "03",
+      "title": "产业价值",
+      "leadText": "诊断不是终点，而是服务的起点",
+      "slideDir": "slide-16",
+      "slideComponent": "SlideChapter03"
+    },
+    {
+      "pageIndex": 16,
+      "type": "content",
+      "section": "产业价值",
+      "navTitle": "产业认知",
+      "slogan": "诊断不是终点，而是服务的起点",
+      "slideDir": "slide-17",
+      "slideComponent": "SlideBusinessModel"
+    },
+    {
+      "pageIndex": 17,
+      "type": "content",
+      "section": "产业价值",
+      "navTitle": "市场定位",
+      "slogan": "窄赛道，深服务，强连接",
+      "slideDir": "slide-18",
+      "slideComponent": "SlideCompetitor"
+    },
+    {
+      "pageIndex": 18,
+      "type": "content",
+      "section": "产业价值",
+      "navTitle": "落地前景",
+      "slogan": "能落地，才是真创新",
+      "slideDir": "slide-19",
+      "slideComponent": "SlideRevenueModel"
+    },
+    {
+      "pageIndex": 19,
+      "type": "content",
+      "section": "产业价值",
+      "navTitle": "社会影响",
+      "slogan": "让罕见被看见，让需要被回应",
+      "slideDir": "slide-20",
+      "slideComponent": "SlideFinance"
+    },
+    {
+      "pageIndex": 20,
+      "type": "section",
+      "section": "团队协作",
+      "sectionIndex": "04",
+      "title": "团队协作",
+      "leadText": "敢想 · 会创 · 同行 · 共进",
+      "slideDir": "slide-21",
+      "slideComponent": "SlideChapter04"
+    },
+    {
+      "pageIndex": 21,
+      "type": "content",
+      "section": "团队协作",
+      "navTitle": "团队精神",
+      "slogan": "敢想 · 会创 · 同行 · 共进",
+      "slideDir": "slide-22",
+      "slideComponent": "SlideTeamMembers"
+    },
+    {
+      "pageIndex": 22,
+      "type": "content",
+      "section": "团队协作",
+      "navTitle": "团队结构",
+      "slogan": "各有所长，彼此成就",
+      "slideDir": "slide-23",
+      "slideComponent": "SlideTeamStructure"
+    },
+    {
+      "pageIndex": 23,
+      "type": "content",
+      "section": "团队协作",
+      "navTitle": "团队效能",
+      "slogan": "一个人做不到的事，我们一起做成",
+      "slideDir": "slide-24",
+      "slideComponent": "SlideAdvisors"
+    },
+    {
+      "pageIndex": 24,
+      "type": "content",
+      "section": "团队协作",
+      "navTitle": "团队资源",
+      "slogan": "我们不是独自前行",
+      "slideDir": "slide-25",
+      "slideComponent": "SlideTechAdvisors"
+    },
+    {
+      "pageIndex": 25,
+      "type": "thanks",
+      "title": "致谢",
+      "slideDir": "slide-29",
+      "slideComponent": "SlideEnding"
+    }
+  ]
+}

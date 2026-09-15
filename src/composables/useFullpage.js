@@ -122,17 +122,25 @@ export function useFullpage() {
   }
 
   function buildNav() {
-    // 自建右侧圆点导航
+    // 自建右侧圆点导航（按 section type 区分视觉层级）
     const nav = document.createElement('ul')
     nav.className = 'fp-nav'
     for (let i = 0; i < total; i++) {
       const li = document.createElement('li')
       const a = document.createElement('a')
-      a.href = `#section-${i}`
+      a.href = '#section-' + i
       a.dataset.index = String(i)
-      a.setAttribute('aria-label', `第 ${i + 1} 页`)
+
+      // 读取 section 的 type 属性，决定圆点视觉
+      const sec = sections[i]
+      const type = sec ? sec.dataset.type : 'content'
+      const navTitle = sec ? (sec.dataset.navTitle || '') : ''
+      a.classList.add('type-' + (type || 'content'))
+      a.dataset.tooltip = navTitle || ('第 ' + (i + 1) + ' 页')
+      a.setAttribute('aria-label', a.dataset.tooltip)
+
       if (i === 0) a.classList.add('active')
-      a.addEventListener('click', e => {
+      a.addEventListener('click', (e) => {
         e.preventDefault()
         moveTo(i)
       })
@@ -141,7 +149,6 @@ export function useFullpage() {
     }
     document.body.appendChild(nav)
 
-    // 监听自身 active 变化，更新圆点
     return nav
   }
 
@@ -184,7 +191,7 @@ export function useFullpage() {
     window.addEventListener('touchstart', onTouchStart, { passive: true })
     window.addEventListener('touchend', onTouchEnd, { passive: true })
 
-    // 自建右侧圆点导航
+    // 自建右侧圆点导航（区分 type-toc / type-section / type-content 三种视觉层级）
     navEl = buildNav()
 
     // 监听 resize - 防抖触发自定义事件，让外部重新计算 scale
@@ -205,7 +212,11 @@ export function useFullpage() {
       destroy: destroy
     }
     isReady.value = true
-    console.log(`[useFullpage] 自研版本初始化成功，${total} 页`)
+    // 同时挂载到 window 方便外部测试调用
+    if (typeof window !== 'undefined') {
+      window.fullpage_api = api.value
+    }
+    console.log('[useFullpage] 自研版本初始化成功，' + total + ' 页')
 
     // 监听 currentIndex 变化，更新圆点
     // 用 effectScope 模拟（Vue 3 兼容）

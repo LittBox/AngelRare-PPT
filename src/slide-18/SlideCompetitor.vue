@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideCompetitor.vue
  * 第 18 页：竞品分析
@@ -11,6 +13,10 @@
  * - 现有竞品更强调 AI 端到端自动完成诊断与研究推理
  * - AngelRare 本项目突出"人机协同"的决策模式
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('市场定位')
+const slogan = ref('窄赛道，深服务，强连接')
+
 const competitors = [
   {
     name: 'Baichuan-M3',
@@ -39,9 +45,11 @@ const competitors = [
 <template>
   <div class="slide-comp">
     <div class="header">
-      <div class="badge">竞品分析</div>
-      <h1 class="title">我们的优势：人机协同，差异化定位</h1>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 对比表 -->
     <div class="compare-table">
@@ -106,14 +114,32 @@ const competitors = [
   position: relative;
   overflow: hidden;
 }
-.header { margin-bottom: 40px; }
-.badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(244, 67, 54, 0.15); color: #ef5350;
-  border: 1px solid rgba(244, 67, 54, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 16px;
+.header {
+  margin-bottom: 30px;
 }
-.title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px; }
+.badge {
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
+}
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .compare-table {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);

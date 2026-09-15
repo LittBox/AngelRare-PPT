@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideAdvisors.vue
  * 第 24 页：指导老师 + 医学专家
@@ -20,6 +22,10 @@ import jyUrl from '@assets/images/content/team-members/专家/jy.jpeg'
 import zsUrl from '@assets/images/content/team-members/专家/zs.jpeg'
 import wxUrl from '@assets/images/content/team-members/专家/wx.jpeg'
 
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('团队效能')
+const slogan = ref('一个人做不到的事，我们一起做成')
+
 const advisors = [
   {
     name: '郑家亮',
@@ -39,10 +45,11 @@ const doctors = [
 <template>
   <div class="slide-adv">
     <div class="header">
-      <div class="badge">团队资源</div>
-      <h1 class="title">指导老师与医学专家</h1>
-      <p class="subtitle">学术、产业、临床 —— 三位一体专家护航</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 指导老师 -->
     <div class="advisor-section">
@@ -79,20 +86,32 @@ const doctors = [
   padding: 60px 100px; font-family: var(--font-display);
   position: relative; overflow: hidden;
 }
-.header { margin-bottom: 32px; }
+.header {
+  margin-bottom: 30px;
+}
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(76, 175, 80, 0.15); color: #81c784;
-  border: 1px solid rgba(76, 175, 80, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 12px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title {
-  font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px;
-  background: linear-gradient(135deg, #ffffff 0%, #81c784 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 8px;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.subtitle { font-size: var(--text-base); color: var(--color-text-muted); font-weight: 300; }
 .section-label {
   font-size: var(--text-lg); color: var(--color-accent);
   font-weight: 700; margin-bottom: 16px; letter-spacing: 2px;

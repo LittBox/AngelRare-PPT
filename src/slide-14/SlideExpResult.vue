@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideExpResult.vue
  * 第 14 页：实验结果（模型对比表）
@@ -10,6 +12,10 @@
  * - 纯大语言模型 (无检索基线, Opus 4.6): 0.520 / 0.445 / 0.160
  * - 实验结果表明，引入系统的检索流水线后，整体准确率取得 16 个百分点的绝对提升（达 68%）
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('创新成效｜服务模式创新')
+const slogan = ref('让最需要帮助的人，不成为买单的人')
+
 const tableData = [
   { model: 'AngelRare (RAG + Opus 4.6)', acc: '0.680', f1: '0.535', delta: '—', highlight: true },
   { model: '纯大语言模型 (无检索基线)', acc: '0.520', f1: '0.445', delta: '-0.160', highlight: false }
@@ -19,10 +25,11 @@ const tableData = [
 <template>
   <div class="slide-exp">
     <div class="header">
-      <div class="badge">实验结果</div>
-      <h1 class="title">E2E-QA 端到端问答准确率对比</h1>
-      <p class="subtitle">引入系统检索流水线后，整体准确率取得 <span class="hl">16 个百分点</span> 的绝对提升</p>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 数据表 -->
     <div class="table-container">
@@ -79,13 +86,28 @@ const tableData = [
 }
 .header { margin-bottom: 48px; text-align: center; }
 .badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(0, 212, 255, 0.15); color: var(--color-accent);
-  border: 1px solid rgba(0, 212, 255, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 16px;
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
-.title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: 4px; margin-bottom: 12px; }
-.subtitle { font-size: var(--text-lg); color: var(--color-text-muted); font-weight: 300; }
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .hl {
   color: var(--color-accent); font-weight: 700;
   background: rgba(0, 212, 255, 0.15); padding: 4px 12px; border-radius: 6px;

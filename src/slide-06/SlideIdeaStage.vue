@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideIdeaStage.vue
  * 第 6 页：先期想法（项目立项过程）
@@ -8,6 +10,10 @@
  * - 线上调研，锚定项目方向
  * - 项目初期，组织团队成员开展线上调研工作，围绕国内外罕见病相关扶持政策、行业前沿研究动向展开资料搜集与深度研读
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('调研深入')
+const slogan = ref('脚下有泥，心中才有答案')
+
 const phases = [
   {
     label: '项目负责人',
@@ -30,9 +36,11 @@ const phases = [
 <template>
   <div class="slide-idea">
     <div class="header">
-      <div class="badge">先期想法</div>
-      <h1 class="title">项目立项：从课堂到真实的开始</h1>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <div class="phases">
       <div v-for="(phase, i) in phases" :key="i" class="phase-card">
@@ -58,25 +66,32 @@ const phases = [
 }
 
 .header {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 }
 
 .badge {
   display: inline-block;
-  padding: 8px 20px;
-  background: rgba(0, 212, 255, 0.15);
-  color: var(--color-accent);
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
   border: 1px solid rgba(0, 212, 255, 0.3);
-  border-radius: var(--radius-full);
-  font-size: var(--text-sm);
-  letter-spacing: 4px;
-  margin-bottom: 20px;
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
 }
 
-.title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  letter-spacing: 4px;
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .phases {

@@ -1,4 +1,6 @@
-<script setup>
+<script setup>import { ref } from 'vue'
+
+
 /**
  * SlideRevenueModel.vue
  * 第 19 页：收入模型 + 财务预测
@@ -16,6 +18,10 @@
  * 2. 数据网络放大（免费部署临床决策工具 嵌入转诊流程 换取脱敏数据入口）
  * 3. 药企付费变现（脱敏数据订阅 + 定制分析与 RWS 合作 30-60 万/年/客户）
  */
+// ============== 定稿文案（不可修改） ==============
+const secondLevelNav = ref('落地前景')
+const slogan = ref('能落地，才是真创新')
+
 const steps = [
   { num: '1', name: '科研服务先行', desc: '数据采集与治理', price: '8-15 万 / 项目' },
   { num: '2', name: '基层网络扩张', desc: '免费部署临床决策工具，嵌入转诊流程', price: '换取脱敏数据入口' },
@@ -26,9 +32,11 @@ const steps = [
 <template>
   <div class="slide-rev">
     <div class="header">
-      <div class="badge">收入模型</div>
-      <h1 class="title">科研服务起步，数据网络放大，药企付费变现</h1>
+      <div class="badge">{{ secondLevelNav }}</div>
     </div>
+
+    <!-- 灵魂 Slogan · 超大艺术字 · 第一视觉中心 -->
+    <h1 class="slogan">{{ slogan }}</h1>
 
     <!-- 三步走 -->
     <div class="steps">
@@ -79,17 +87,31 @@ const steps = [
   position: relative;
   overflow: hidden;
 }
-.header { margin-bottom: 40px; }
-.badge {
-  display: inline-block; padding: 8px 20px;
-  background: rgba(76, 175, 80, 0.15); color: #81c784;
-  border: 1px solid rgba(76, 175, 80, 0.3); border-radius: var(--radius-full);
-  font-size: var(--text-sm); letter-spacing: 4px; margin-bottom: 16px;
+.header {
+  margin-bottom: 30px;
 }
-.title {
-  font-size: var(--text-2xl); font-weight: 700; letter-spacing: 2px;
-  background: linear-gradient(135deg, #ffffff 0%, #81c784 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+.badge {
+  display: inline-block;
+  padding: 8px 24px;
+  background: rgba(74, 108, 247, 0.12);
+  color: var(--color-accent, #00d4ff);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 999px;
+  font-size: 16px;
+  letter-spacing: 6px;
+  font-weight: 400;
+}
+.slogan {
+  margin: 30px 0 60px 0;
+  padding: 0;
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #4a6cf7 50%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 .steps {
   display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr; gap: 16px;
